@@ -986,52 +986,57 @@
                                         <button type="button" class="w-full text-white bg-red-500 border-red-500 btn hover:text-white hover:bg-red-600 hover:border-red-600 focus:text-white focus:bg-red-600 focus:border-red-600 focus:ring focus:ring-red-100 active:text-white active:bg-red-600 active:border-red-600 active:ring active:ring-red-100 dark:ring-red-400/20">Buy Now</button>
                                     </div>
 
-                                    <div class="flex items-center gap-3 mt-3 justify-evenly">
+                                    {{-- <div class="flex items-center gap-3 mt-3 justify-evenly">
                                         <a href="#!" class="transition-all duration-300 ease-linear hover:text-custom-500"><i data-lucide="repeat" class="inline-block align-middle size-3 ltr:mr-1 rtl:ml-1"></i> <span class="align-middle">Compare</span></a>
                                         <a href="#!" data-modal-target="askQuestionModal" class="transition-all duration-300 ease-linear hover:text-custom-500"><i data-lucide="help-circle" class="inline-block align-middle size-3 ltr:mr-1 rtl:ml-1"></i> <span class="align-middle">Ask a Question</span></a>
                                         <a href="#!" data-modal-target="shareModal" class="transition-all duration-300 ease-linear hover:text-custom-500"><i data-lucide="share-2" class="inline-block align-middle size-3 ltr:mr-1 rtl:ml-1"></i> <span class="align-middle">Share</span></a>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div><!--end card-->
                             <div class="card">
                                 <div class="border-b card-body border-slate-200 dark:border-zink-500">
                                     <div class="flex">
-                                        <h6 class="grow text-15"><i data-lucide="store" class="inline-block size-4 ltr:mr-1 rtl:ml-1"></i> <span class="align-middle">{{ $product_info_toRelation->store->name }}</span></h6>
-                                        <div class="shrink-0">
+                                        <h6 class="grow text-15"><i data-lucide="store" class="inline-block size-4 ltr:mr-1 rtl:ml-1"></i> <span class="align-middle">{{ $product->store->name }}</span></h6>
+                                        {{-- <div class="shrink-0">
                                             <i data-lucide="star" class="inline-block text-yellow-500 size-4 ltr:mr-1 rtl:ml-1"></i> <span class="align-middle">(4.8)</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <div class="flex">
-                                        {{-- <h6 class="grow text-15"><i data-lucide="map-pin" class="inline-block text-orange-500 size-4 ltr:mr-1 rtl:ml-1"></i> <span class="align-middle">California, USA</span></h6> --}}
+                                        </div> --}}
                                         <div class="shrink-0">
                                             <button type="button" class="px-2.5 py-2 text-xs text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">View Store</button>
                                         </div>
                                     </div>
                                 </div>
+                                {{-- <div class="card-body">
+                                    <div class="flex">
+                                        <h6 class="grow text-15"><i data-lucide="map-pin" class="inline-block text-orange-500 size-4 ltr:mr-1 rtl:ml-1"></i> <span class="align-middle">California, USA</span></h6>
+                                        <div class="shrink-0">
+                                            <button type="button" class="px-2.5 py-2 text-xs text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">View Store</button>
+                                        </div>
+                                    </div>
+                                </div> --}}
                             </div><!--end card-->
                         </div>
                     </div><!--end col-->
                     <div class="xl:col-span-8">
                         <div class="card">
                             <div class="card-body">
+                                @if ( auth()->user() && auth()->user()->role->name == 'admin')
                                 <div class="relative ltr:float-right rtl:float-left dropdown">
                                     <button class="flex items-center justify-center size-[30px] dropdown-toggle p-0 text-slate-500 btn bg-slate-100 hover:text-white hover:bg-slate-600 focus:text-white focus:bg-slate-600 focus:ring focus:ring-slate-100 active:text-white active:bg-slate-600 active:ring active:ring-slate-100 dark:bg-slate-500/20 dark:text-slate-400 dark:hover:bg-slate-500 dark:hover:text-white dark:focus:bg-slate-500 dark:focus:text-white dark:active:bg-slate-500 dark:active:text-white dark:ring-slate-400/20" id="categoryNotes1" data-bs-toggle="dropdown"><i data-lucide="more-horizontal" class="size-3"></i></button>
                                     <ul class="absolute z-50 hidden py-2 mt-1 ltr:text-left rtl:text-right list-none bg-white rounded-md shadow-md dropdown-menu min-w-[10rem] dark:bg-zink-600" aria-labelledby="categoryNotes1">
                                         <li>
-                                            <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="apps-ecommerce-product-create.html"><i data-lucide="file-edit" class="inline-block size-3 ltr:mr-1 rtl:ml-1"></i> <span class="align-middle">Edit</span></a>
+                                            <a href="#!" class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" ><i data-lucide="file-edit" class="inline-block size-3 ltr:mr-1 rtl:ml-1"></i> <span class="align-middle">Edit</span></a>
                                         </li>
                                         <li>
-                                            <a data-modal-target="deleteModal" class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="#!"><i data-lucide="trash-2" class="inline-block size-3 ltr:mr-1 rtl:ml-1"></i> <span class="align-middle">Delete</span></a>
+                                            <a href="#!" data-modal-target="deleteModal" class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" ><i data-lucide="trash-2" class="inline-block size-3 ltr:mr-1 rtl:ml-1"></i> <span class="align-middle">Delete</span></a>
                                         </li>
                                     </ul>
                                 </div>
+                                @endif
                                 {{-- <span class="px-2.5 py-0.5 text-xs inline-block font-medium rounded border bg-sky-100 border-sky-100 text-sky-500 dark:bg-sky-400/20 dark:border-transparent"> New Arrivals</span> --}}
                                 <h5 class="mt-3 mb-1">{{ $product->title }}</h5>
                                 <ul class="flex flex-wrap items-center gap-4 mb-5 text-slate-500 dark:text-zink-200">
                                     {{-- <li><a href="#!" class="font-medium underline text-custom-500">Rossie Fadel</a></li> --}}
-                                    <li>Seller: <a href="#!" class="font-medium">{{ $product_info_toRelation->store->user->name }}</a></li>
+                                    <li>Seller: <a href="#!" class="font-medium">{{ $product->store->user->name }}</a></li>
                                     {{-- <li>Published: <span class="font-medium">20 Oct, 2023</span></li> --}}
                                 </ul>
 
@@ -1050,9 +1055,9 @@
                                     <div class="shrink-0">
                                         <h6>973 Reviews</h6>
                                     </div>
-                                    <div class="shrink-0">
+                                    {{-- <div class="shrink-0">
                                         <h6>1,231 Sold</h6>
-                                    </div>
+                                    </div> --}}
                                 </div>
 
                                 <div class="mb-4">
@@ -1284,13 +1289,17 @@
                                     <div class="xl:col-span-8">
                                         <div class="flex items-center gap-3 mb-4">
                                             <h5 class="text-16 grow">Reviews</h5>
-                                            <button type="button" data-modal-target="addReviewsModal" class="px-2 shrink-0 py-1.5 text-xs text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">Add Review</button>
+                                            @if (auth()->user())
+                                                <button type="button" data-modal-target="addReviewsModal" class="px-2 shrink-0 py-1.5 text-xs text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">Add Review</button>
+                                            @endif
                                         </div>
                                         @foreach ($reviews as $review)
 
                                         <div class="mt-3">
                                             <div class="relative ltr:float-right rtl:float-left dropdown">
+                                                @if (auth()->user() && auth()->user()->id == $review->user->id )
                                                 <button class="flex items-center justify-center size-[30px] dropdown-toggle p-0 text-slate-500 btn bg-slate-100 hover:text-white hover:bg-slate-600 focus:text-white focus:bg-slate-600 focus:ring focus:ring-slate-100 active:text-white active:bg-slate-600 active:ring active:ring-slate-100 dark:bg-slate-500/20 dark:text-slate-400 dark:hover:bg-slate-500 dark:hover:text-white dark:focus:bg-slate-500 dark:focus:text-white dark:active:bg-slate-500 dark:active:text-white dark:ring-slate-400/20" id="reviews1" data-bs-toggle="dropdown"><i data-lucide="more-horizontal" class="size-3"></i></button>
+                                                @endif
                                                 <ul class="absolute z-50 hidden py-2 mt-1 ltr:text-left rtl:text-right list-none bg-white rounded-md shadow-md dropdown-menu min-w-[10rem] dark:bg-zink-600" aria-labelledby="reviews1">
                                                     <li>
                                                         <a data-modal-target="addReviewsModal" class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="#!"><i data-lucide="file-edit" class="inline-block size-3 ltr:mr-1 rtl:ml-1"></i> <span class="align-middle">Edit</span></a>
@@ -1299,6 +1308,7 @@
                                                         <a data-modal-target="deleteModal" class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="#!"><i data-lucide="trash-2" class="inline-block size-3 ltr:mr-1 rtl:ml-1"></i> <span class="align-middle">Delete</span></a>
                                                     </li>
                                                 </ul>
+
                                             </div>
                                             <div class="flex items-center gap-3">
                                                 <div class="w-10 h-10 rounded-full shrink-0 bg-sky-100 dark:bg-sky-500/20">
@@ -1474,15 +1484,13 @@
         <div class="max-h-[calc(theme('height.screen')_-_180px)] p-4 overflow-y-auto">
             <form action="#!">
                 <div class="grid grid-cols-1 gap-5 xl:grid-cols-12">
-                    {{-- <input type="hidden" name="userID" value="{{ auth()->user()->id }}"> --}}
 
-                    <input type="hidden" name="userID" value="4">
+                    @if (auth()->user())
+                        <input type="hidden" name="userID" value="{{ auth()->user()->id }}">
+                    @endif
 
-                    {{-- @foreach ($products as $product)
-                    <option value="{{ implode(', ', $product['ids']) }}">{{ $product['code'] }}</option>
-                    @endforeach --}}
+                    <input type="hidden" name="productIDs" value="{{ implode(', ', $product->ids) }}">
 
-                    {{-- <input type="hidden" name="productIDs" value="{{ implode(', ', $product['ids']) }}"> --}}
                     <div class="xl:col-span-4">
                         <div>
                             <label for="categorySelect" class="inline-block mb-2 text-base font-medium">Rating</label>

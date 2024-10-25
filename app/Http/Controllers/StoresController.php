@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Store;
+use App\Models\User;
 use App\Http\Requests\StorestoresRequest;
 use App\Http\Requests\UpdatestoresRequest;
+use Illuminate\Http\Request;
+
+use function Livewire\store;
 
 class StoresController extends Controller
 {
@@ -13,7 +17,14 @@ class StoresController extends Controller
      */
     public function index()
     {
-        //
+        $stores = Store::paginate(6);
+        $users = User::all(); // Get all users
+
+
+        return view('admin.apps-ecommerce-sellers', [
+            'stores' => $stores,
+            'users' => $users,
+        ]);
     }
 
     /**
@@ -27,9 +38,25 @@ class StoresController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorestoresRequest $request)
+    public function store(Request $request)
     {
-        //
+
+        $validatedData = $request->validate([
+            'companyName' => 'required|string|max:255',
+            'companyDescription' => 'required|string',
+            'userID' => 'required|exists:users,id',
+        ]);
+
+
+        $store = new Store();
+        $store->name = $validatedData['companyName'];
+        $store->discrption = $validatedData['companyDescription'];
+        $store->user_id = $validatedData['userID'];
+        $store->save();
+
+        // Redirect or return a response
+        return redirect()->route('stores')->with('success', 'Company created successfully!');
+
     }
 
     /**

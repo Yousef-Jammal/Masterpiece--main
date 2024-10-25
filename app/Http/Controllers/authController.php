@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Session;
+
+
+
 
 class authController extends Controller
 {
@@ -35,12 +39,21 @@ class authController extends Controller
           }
 
 
-        $remember = $request->has('remember') ? true : false;
-          if ($remember) {
+        // $remember = $request->has('remember') ? true : false;
+        //   if ($remember) {
+        //     config(['session.lifetime' => 43200]); // 30 days
+        // } else {
+        //     config(['session.lifetime' => 120]); // 2 hours
+        // }
+
+        if ($request->has('remember')) {
+            Session::put('remember_me', true);
             config(['session.lifetime' => 43200]); // 30 days
         } else {
+            Session::put('remember_me', false);
             config(['session.lifetime' => 120]); // 2 hours
         }
+
 
           if ($user->role->id == '1') {
             return redirect()->route('admin_main');

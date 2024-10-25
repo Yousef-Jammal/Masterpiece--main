@@ -56,8 +56,7 @@ class ProductsController extends Controller
 
     public function store(Request $request)
     {
-        $store_id = Store::where('user_id', $request->user_id)->pluck('id')->first();
-
+        $store_id = Store::where('user_id',  $request->user_id)->pluck('id')->first();
         function better_uniqid($length = 12) {
             $data = openssl_random_pseudo_bytes(ceil($length / 2));
             return bin2hex($data);
@@ -130,96 +129,71 @@ class ProductsController extends Controller
      */
     public function show($code)
     {
-        // // $product = Product::find($code);
-        // $product_info_toRelation = Product::where('code', $code)->get()->first();
-        // // $products = Product::where('code', $code)->groupBy('code')->get();
-
-        // $reviews = Review::where('product_id', $product_info_toRelation->id)->get();  // this is not good the currect is by code مهم مهم مهم
-
-        // $ratingCount = Review::where('product_id', $product_info_toRelation->id)->count();
-
-        // $averageRating = Review::where('product_id', $product_info_toRelation->id)->avg('rating');
-        // $currentAvRa = number_format((float) $averageRating, 1, '.', '');
-        // if (floor($averageRating) == $averageRating) {
-        //     $currentAvRa = (int) $averageRating;
-        // } else {
-        //     $currentAvRa = number_format((float) $averageRating, 1, '.', '');
-        // }
 
 
 
+        $product = Product::with('store.user')
+            ->select(
+                DB::raw('GROUP_CONCAT(id) as ids'),
+                'code',
+                'title',
+                'price',
+                'status',
+                'gender',
+                'description',
+                'quantity',
+                'store_id',
+                DB::raw('GROUP_CONCAT(DISTINCT color ORDER BY color) as colors'),
+                DB::raw('GROUP_CONCAT(DISTINCT size ORDER BY FIELD(size, "XS", "S", "M", "L", "XL", "XXL", "3XL")) as sizes')
+            )
+                ->where('code', $code)
+                ->groupBy('code', 'title', 'price', 'status', 'gender', 'description', 'quantity')
+                ->first();
 
-        // $product = Product::select('id', 'code', 'title', 'price', 'status', 'gender', 'description', 'quantity',
-        //         DB::raw('GROUP_CONCAT(DISTINCT color ORDER BY color) as colors'),
-        //         DB::raw('GROUP_CONCAT(DISTINCT size ORDER BY FIELD(size, "XS", "S", "M", "L", "XL", "XXL", "3XL") ) as sizes') // Custom order for sizes
-        //     )
-        //     ->where('code', $code)
-        //     ->groupBy('code', 'title', 'price', 'status', 'gender', 'description', 'quantity')
-        //     ->first();
-
-
-        // $product->colors = explode(',', $product->colors);
-        // $product->sizes = explode(',', $product->sizes);
-
-        // return view('user.apps-ecommerce-product-overview', [
-        //     'product' => $product,
-        //     'product_info_toRelation'=> $product_info_toRelation,
-        //     'reviews' => $reviews,
-        //     'averageRating' => $currentAvRa,
-        //     'ratingCount' => $ratingCount,
-        // ]);
-        
-    // Get the product information using the code
-    $product_info_toRelation = Product::where('code', $code)->first();
-
-    // Check if the product exists
-    if (!$product_info_toRelation) {
-        return redirect()->back()->with('error', 'Product not found.');
-    }
-
-    // Get reviews for the product
-    $reviews = Review::where('product_id', $product_info_toRelation->id)->get();
-
-    // Get rating count and average rating
-    $ratingCount = $reviews->count();
-    $averageRating = $reviews->avg('rating');
-
-    // Prepare ratings data
-    $ratings = [];
-    for ($i = 5; $i >= 1; $i--) {
-        $count = $reviews->where('rating', $i)->count();
-        $percentage = $ratingCount > 0 ? ($count / $ratingCount) * 100 : 0; // Calculate percentage
-        $ratings[] = [
-            'stars' => $i,
-            'count' => $count,
-            'percentage' => number_format($percentage, 2), // Format percentage
+        $productObj = (object) [
+            'code' => $product->code,
+            'ids' => explode(',', $product->ids),
+            'title' => $product->title,
+            'price' => $product->price,
+            'status' => $product->status,
+            'gender' => $product->gender,
+            'description' => $product->description,
+            'quantity' => $product->quantity,
+            'colors' => explode(',', $product->colors),
+            'sizes' => explode(',', $product->sizes),
+            'store' => $product->store,
         ];
-    }
 
-    // Format average rating
-    $currentAvRa = floor($averageRating) == $averageRating ? (int)$averageRating : number_format((float)$averageRating, 1, '.', '');
+        // Get reviews for the product
+        $reviews = Review::where('product_id', $productObj->ids[0])->get();
 
-    // Fetch product details along with colors and sizes
-    $product = Product::select('id', 'code', 'title', 'price', 'status', 'gender', 'description', 'quantity',
-            DB::raw('GROUP_CONCAT(DISTINCT color ORDER BY color) as colors'),
-            DB::raw('GROUP_CONCAT(DISTINCT size ORDER BY FIELD(size, "XS", "S", "M", "L", "XL", "XXL", "3XL")) as sizes')
-        )
-        ->where('code', $code)
-        ->groupBy('code', 'title', 'price', 'status', 'gender', 'description', 'quantity')
-        ->first();
+        // Get rating count and average rating
+        $ratingCount = $reviews->count();
+        $averageRating = $reviews->avg('rating');
 
-    // Convert colors and sizes to arrays
-    $product->colors = explode(',', $product->colors);
-    $product->sizes = explode(',', $product->sizes);
+        // Prepare ratings data
+        $ratings = [];
+        for ($i = 5; $i >= 1; $i--) {
+            $count = $reviews->where('rating', $i)->count();
+            $percentage = $ratingCount > 0 ? ($count / $ratingCount) * 100 : 0; // Calculate percentage
+            $ratings[] = [
+                'stars' => $i,
+                'count' => $count,
+                'percentage' => number_format($percentage, 2), // Format percentage
+            ];
+        }
 
-    return view('user.apps-ecommerce-product-overview', [
-        'product' => $product,
-        'product_info_toRelation' => $product_info_toRelation,
-        'reviews' => $reviews,
-        'averageRating' => $currentAvRa,
-        'ratingCount' => $ratingCount,
-        'ratings' => $ratings, // Pass the ratings data to the view
-    ]);
+        // Format average rating
+        $currentAvRa = floor($averageRating) == $averageRating ? (int)$averageRating : number_format((float)$averageRating, 1, '.', '');
+
+
+        return view('user.apps-ecommerce-product-overview', [
+            'product' => $productObj,
+            'reviews' => $reviews,
+            'averageRating' => $currentAvRa,
+            'ratingCount' => $ratingCount,
+            'ratings' => $ratings, // Pass the ratings data to the view
+        ]);
     }
 
     /**

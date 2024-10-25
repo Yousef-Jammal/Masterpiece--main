@@ -18,12 +18,12 @@ use App\Http\Controllers\StoresController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\WishlistsController;
 use App\Http\Controllers\authController;
+use App\Http\Controllers\DiscountCodeController;
 
 use App\Http\Controllers\pages\landingPage;
 
 use App\Http\Controllers\Pages\Shop\FilterController;
-
-
+use App\Models\CartItem;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,8 +57,11 @@ Route::prefix('admin')->group(function () {
 
 
 Route::post('reviews', [ReviewsController::class, 'store'])->name('reviews_create');
+Route::get('stores', [StoresController::class, 'index'])->name('stores');
+Route::post('stores', [StoresController::class, 'store'])->name('store_create');
 
 Route::prefix('products')->group(function () {
+
     Route::get('/product/{code}', action: [ProductsController::class, 'show'])->name('product_show');
     Route::delete('/products/{id}', [ProductsController::class, 'destroy'])->name('delete_product');
 
@@ -105,8 +108,12 @@ Route::get('checkUser', function(){
 Route::prefix( 'user')->group(function () {
     Route::get('landingPage', [landingPage::class, 'show'])->name('show_landingPage');
     Route::get('shop',  [ProductsController::class, 'show_shop'])->name('show_products');
+    Route::get('userCart/{userID}',  [CartItemsController::class, 'userCart'])->name('userCart');
 });
 
+// for check the code discount
+Route::post('/check-discount-code', [DiscountCodeController::class, 'checkCode'])->name('discount_check');
+Route::post('/add-cartItme', [CartItemsController::class, 'addCart'])->name('cart_add');
 
 
 // start auth

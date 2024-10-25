@@ -19,6 +19,18 @@
 
     <!-- Layout config Js -->
     <script src="{{ asset('js/layout.js') }}"></script>
+    <style>
+        #alertForAddCart {
+            opacity: 0;
+            /* transform: translateX(100%); */
+            transition: all 0.3s ease;
+        }
+
+        #alertForAddCart.show {
+            opacity: 1;
+            /* transform: translateX(0); */
+        }
+    </style>
     <!-- Icons CSS -->
 
     <!-- Tailwind CSS -->
@@ -26,7 +38,7 @@
 
   <link rel="stylesheet" href="{{ asset('css/tailwind2.css') }}">
 </head>
-<body class="text-base bg-body-bg text-body font-public dark:text-zink-100 dark:bg-zink-800 group-data-[skin=bordered]:bg-body-bordered group-data-[skin=bordered]:dark:bg-zink-700">
+<body class=" text-base bg-body-bg text-body font-public dark:text-zink-100 dark:bg-zink-800 group-data-[skin=bordered]:bg-body-bordered group-data-[skin=bordered]:dark:bg-zink-700">
     {{-- <body class="text-base bg-white text-body font-public dark:text-zink-50 dark:bg-zinc-900"> --}}
 
     <div class="group-data-[sidebar-size=sm]:min-h-sm group-data-[sidebar-size=sm]:relative">
@@ -393,6 +405,14 @@
 
         {{-- <header id="page-topbar" class="ltr:md:left-vertical-menu rtl:md:right-vertical-menu group-data-[sidebar-size=md]:ltr:md:left-vertical-menu-md group-data-[sidebar-size=md]:rtl:md:right-vertical-menu-md group-data-[sidebar-size=sm]:ltr:md:left-vertical-menu-sm group-data-[sidebar-size=sm]:rtl:md:right-vertical-menu-sm group-data-[layout=horizontal]:ltr:left-0 group-data-[layout=horizontal]:rtl:right-0 fixed right-0 z-[1000] left-0 print:hidden group-data-[navbar=bordered]:m-4 group-data-[navbar=bordered]:[&.is-sticky]:mt-0 transition-all ease-linear duration-300 group-data-[navbar=hidden]:hidden group-data-[navbar=scroll]:absolute group/topbar group-data-[layout=horizontal]:z-[1004]"> --}}
         <header id="page-topbar" class="ltr:md:left-0 rtl:md:right-0 group-data-[sidebar-size=md]:ltr:md:left-0 group-data-[sidebar-size=md]:rtl:md:right-0 group-data-[sidebar-size=sm]:ltr:md:left-0 group-data-[sidebar-size=sm]:rtl:md:right-0 group-data-[layout=horizontal]:ltr:left-0 group-data-[layout=horizontal]:rtl:right-0 fixed right-0 z-[1000] left-0 print:hidden group-data-[navbar=bordered]:m-0 group-data-[navbar=bordered]:[&.is-sticky]:mt-0 transition-all ease-linear duration-300 group-data-[navbar=hidden]:hidden group-data-[navbar=scroll]:absolute group/topbar group-data-[layout=horizontal]:z-[1004]">
+            <span id="alertForAddCart" class="absolute flex flex-col gap-3" style="bottom: -5rem; right:35%">
+                <div class="relative p-3 pr-12 text-sm border border-transparent rounded-md text-custom-50 bg-custom-500">
+                    {{-- <button class="absolute top-0 bottom-0 right-0 p-3 transition text-custom-200 hover:text-custom-100"><i data-lucide="x" class="h-5"></i></button> --}}
+                    <span class="font-bold">Custom</span> alert! You should check in on some of those fields below.
+                </div>
+            </span>
+            {{-- <span id="alertForAddCart" class="show absolute flex flex-col gap-3 transition-all duration-500 ease-in-out opacity-0 translate-x-full" style="bottom: -5rem; right: 0"></span> --}}
+
             <div class="layout-width">
                 <div class="flex items-center px-4 mx-auto bg-topbar border-b-2 border-topbar group-data-[topbar=dark]:bg-topbar-dark group-data-[topbar=dark]:border-topbar-dark group-data-[topbar=brand]:bg-topbar-brand group-data-[topbar=brand]:border-topbar-brand shadow-md h-header shadow-slate-200/50 group-data-[navbar=bordered]:rounded-md group-data-[navbar=bordered]:group-[.is-sticky]/topbar:rounded-t-none group-data-[topbar=dark]:dark:bg-zink-700 group-data-[topbar=dark]:dark:border-zink-700 dark:shadow-none group-data-[topbar=dark]:group-[.is-sticky]/topbar:dark:shadow-zink-500 group-data-[topbar=dark]:group-[.is-sticky]/topbar:dark:shadow-md group-data-[navbar=bordered]:shadow-none group-data-[layout=horizontal]:group-data-[navbar=bordered]:rounded-b-none group-data-[layout=horizontal]:shadow-none group-data-[layout=horizontal]:dark:group-[.is-sticky]/topbar:shadow-none">
                     <div class="grid grid-cols-3 justify-center flex items-center w-full group-data-[layout=horizontal]:mx-auto group-data-[layout=horizontal]:max-w-screen-2xl navbar-header group-data-[layout=horizontal]:ltr:xl:pr-3 group-data-[layout=horizontal]:rtl:xl:pl-3">
@@ -1056,13 +1076,42 @@
                 <div class="p-5 rounded-md bg-gradient-to-b from-slate-100 to-white dark:from-zinc-800 dark:to-zinc-900" data-aos="fade-up" data-aos-easing="linear">
                     <img src="{{ asset('images/img-16.png') }}" alt="" class="mx-auto h-52">
                     <div class="mt-3">
-                        <p class="mb-3"><i data-lucide="star" class="inline-block text-yellow-500 align-middle size-4 ltr:mr-1 rtl:ml-1"></i> (4.8)</p>
+                        {{-- <p class="mb-3"><i data-lucide="star" class="inline-block text-yellow-500 align-middle size-4 ltr:mr-1 rtl:ml-1"></i> (4.8)</p> --}}
+                        @php
+                            $averageRating = round($product->reviews_avg_rating, 1); // متوسط التقييم
+                            $fullStars = floor($averageRating); // عدد النجوم الممتلئة
+                            $halfStar = $averageRating - $fullStars >= 0.5; // تحقق إذا كان هناك نصف نجمة
+                        @endphp
+
+                        <p class="mb-3">
+                            @for ($i = 0; $i < $fullStars; $i++)
+                                <i class="ri-star-fill text-yellow-500"></i>
+                            @endfor
+
+                            @if ($halfStar)
+                                <i class="ri-star-half-line text-yellow-500"></i>
+                            @endif
+
+                            <span>({{ $averageRating }})</span>
+                        </p>
+
                         <h5><a href="#!">{{ $product->title }}</a></h5>
 
                         <div class="flex items-center gap-3 mt-3">
                             <h6 class="text-16 grow">${{ $product->price }}JD</h6>
+                            {{-- <div class="shrink-0">
+                                <button  type="button" class="px-2 py-1.5 text-xs text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">Add to Cart</button>
+                            </div> --}}
                             <div class="shrink-0">
-                                <button type="button" class="px-2 py-1.5 text-xs text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">Add to Cart</button>
+                                <button
+                                id="add_to_cart"
+                                type="button"
+                                class="px-2 py-1.5 text-xs text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20"
+                                data-user-id="{{ auth()->user()->id }}"
+                                data-product-id="{{ $product->id }}"
+                                >
+                                Add to Cart
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -1560,6 +1609,9 @@
 
 
 
+
+
+
     <script src='{{ asset("libs/choices.js/public/assets/scripts/choices.min.js") }}'></script>
     <script src="{{ asset('libs/@popperjs/core/umd/popper.min.js') }}"></script>
     <script src="{{ asset('libs/tippy.js/tippy-bundle.umd.min.js') }}"></script>
@@ -1576,7 +1628,44 @@
 
 
 
-<script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
+
+    <script src="{{ asset('js/jquery-3.7.1.min.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $('#add_to_cart').on('click', function() {
+                let userId = $(this).data('user-id');
+                let productId = $(this).data('product-id');
+
+                $.ajax({
+                    url: '{{ route("cart_add") }}',
+                    method: 'POST',
+                    data: {
+                        user_id: userId,
+                        product_id: productId,
+                        _token: '{{ csrf_token() }}'
+                    },
+                    success: function(response) {
+                        // $('#alertForAddCart').html(`
+
+                        // `);
+                        $('#alertForAddCart').addClass('show');
+
+                        // إخفاء التنبيه بعد فترة من الوقت
+                        setTimeout(function() {
+                            $('#alertForAddCart').removeClass('show');
+                        }, 3000); // يتم الإخفاء بعد 3 ثوانٍ
+                    },
+                    error: function(xhr, status, error) {
+                        alert("There was an error. Please try again.");
+                    }
+                });
+            });
+        });
+
+    </script>
+
+
 
 
 

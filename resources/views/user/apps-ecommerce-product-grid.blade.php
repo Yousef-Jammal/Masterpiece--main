@@ -314,7 +314,7 @@
                                     </div>
                                     <div class="card-body !pt-0 md:group-[.gridView]:flex group-[.gridView]:!p-5 group-[.gridView]:gap-3 group-[.gridView]:grow">
                                         <div class="group-[.gridView]:grow">
-                                            <h6 class="mb-1 truncate transition-all duration-200 ease-linear text-15 hover:text-custom-500"><a href="apps-ecommerce-product-overview.html">{{ $product->title }}</a></h6>
+                                            <h6 class="mb-1 truncate transition-all duration-200 ease-linear text-15 hover:text-custom-500"><a href="{{ route('product_show', $product->code) }}">{{ $product->title }}</a></h6>
 
                                             <div class="flex items-center text-slate-500 dark:text-zink-200">
                                                 <div class="mr-1 text-yellow-500 shrink-0 text-15">
