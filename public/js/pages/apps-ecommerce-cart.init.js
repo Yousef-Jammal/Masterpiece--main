@@ -25,7 +25,8 @@ function inputSpinComponents() {
                         if (inputVal < maxVal) {
                             inputElement.value = inputVal + 1;
                             updateQuantity(inputElement);
-                            removeBtn(inputElement)
+                            // removeBtn(inputElement)
+                            // window.removeBtn(inputElement)
                         }
                     });
                 });
@@ -40,7 +41,8 @@ function inputSpinComponents() {
                         if (inputVal > minVal) {
                             inputElement.value = inputVal - 1;
                             updateQuantity(inputElement);
-                            removeBtn(inputElement)
+                            // removeBtn(inputElement)
+                            // window.removeBtn(inputElement)
                         }
                     });
                 });
@@ -56,23 +58,25 @@ function inputSpinComponents() {
 
         Array.from(productRow.getElementsByClassName('products-line-price')).forEach(function (e) {
             e.innerHTML = linePrice.toFixed(2);
-            recalculateCart();
+            window.recalculateCart();
         });
     }
+
+
     // Add remove button functionality
-    function removeBtn(productElement) {
+    window.removeBtn = function (productElement) {
         var productRow = productElement.closest('.products');
-        var removeButton = productRow.querySelector('.remove-button');
-        if (removeButton) {
-            removeButton.addEventListener('click', function () {
-                document.querySelector("#deleteRecord").addEventListener("click", () => {
+        // var removeButton = productRow.querySelector('.remove-button');
+        // if (removeButton) {
+            // removeButton.addEventListener('click', function () {
+                // document.querySelector("#deleteRecord").addEventListener("click", () => {
                     productRow.remove();
-                    recalculateCart();
-                })
-            });
-        }
+                    window.recalculateCart();
+                // })
+            // });
+        // }
     }
-    function recalculateCart() {
+    window.recalculateCart = function() {
         var elm = document.querySelector(".products-list");
         var subtotal = 0;
         Array.from(elm.getElementsByClassName("products")).forEach(function (item) {
@@ -81,15 +85,35 @@ function inputSpinComponents() {
             });
         });
         var currencySign = "$";
-        var taxRate = 0.125;
-        var shippingRate = 65.00;
-        var discountRate = 0.15;
+        // var taxRate = 0.125;
+        // var shippingRate = 65.00;
+        var taxRate = 0;
+        var shippingRate = 0;
+
+        let discountText = document.querySelector('#Item_Discounts_Precentage').textContent.trim();
+        let discountTextAmount = document.querySelector('#Item_Discounts').textContent.trim();
+        let discountAmount = parseFloat(discountTextAmount.replace('-', '').replace('$', ''));
+
+
+
+        if(discountText == ''){
+            if(discountAmount > 0){
+                discount = discountAmount;
+            }else{
+                var discount = 0;
+            }
+        }else{
+            var discountRate = parseFloat(discountText.replace('%', '').replace('(', '').replace(')', '')) / 100;
+            var discount = subtotal * discountRate;
+        }
         /* Calculate totals */
         var tax = subtotal * taxRate;
-        var discount = subtotal * discountRate;
 
         var shipping = (subtotal > 0 ? shippingRate : 0);
         var newTotal = subtotal + tax + shipping - discount;
+        if(newTotal <= 0){
+            newTotal = 0;
+        }
         const cartSubtitle = elm.parentElement.querySelector(".table-total .cart-subtotal")
         if (cartSubtitle) {
             cartSubtitle.innerHTML = currencySign + subtotal.toFixed(2);
@@ -114,16 +138,16 @@ function inputSpinComponents() {
 }
 inputSpinComponents()
 
-// Lucid icons js
-document.querySelector(".products-list").addEventListener("click", function (e) {
-    if (e.target.classList.contains("remove-button")) {
-        handleRemoveClick(e.target.closest(".products"));
-    }
-});
+// // Lucid icons js
+// document.querySelector(".products-list").addEventListener("click", function (e) {
+//     if (e.target.classList.contains("remove-button")) {
+//         handleRemoveClick(e.target.closest(".products"));
+//     }
+// });
 
-/* Handle remove button click */
-function handleRemoveClick(productsElement) {
-    document.getElementById("deleteRecord").addEventListener("click", function () {
-        productsElement.remove();
-    });
-}
+// /* Handle remove button click */
+// function handleRemoveClick(productsElement) {
+//     document.getElementById("deleteRecord").addEventListener("click", function () {
+//         productsElement.remove();
+//     });
+// }

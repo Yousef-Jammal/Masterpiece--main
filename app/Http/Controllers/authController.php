@@ -55,11 +55,11 @@ class authController extends Controller
         }
 
 
-          if ($user->role->id == '1') {
+        if ($user->role->id == '1') {
             return redirect()->route('admin_main');
         } else {
-              return view('landing_pages.product-landing');
-          }
+            return redirect()->route('show_landingPage');
+        }
       }
 
 

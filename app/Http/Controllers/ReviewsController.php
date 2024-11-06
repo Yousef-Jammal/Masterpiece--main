@@ -43,9 +43,33 @@ class ReviewsController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function AddReview(Request $request)
     {
-        //
+
+        $productIDs = explode(',', $request->product_ids);
+
+        foreach ($productIDs as $productID) {
+
+            $productID = trim($productID);
+            if (!is_numeric($productID)) {
+                continue;
+            }
+
+            // Create a review for each product ID
+            Review::create([
+                'user_id' => $request->user_id,
+                'product_id' => $productID,
+                'rating' => $request->rating,
+                'review' => $request->comment,
+            ]);
+        }
+
+        return response()->json([
+            'status' => '200',
+            'message' => 'success',
+        ],
+         200);
+
     }
 
     /**

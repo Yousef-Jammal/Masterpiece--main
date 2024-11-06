@@ -1085,99 +1085,12 @@
                                         </label>
                                     </div>
                                     @endforeach
-                                    {{-- <div>
-                                        <input id="selectSizeS" class="hidden peer" type="radio" value="S" name="selectSize" checked>
-                                        <label for="selectSizeS" class="flex items-center justify-center w-8 h-8 text-xs border rounded-md cursor-pointer border-slate-200 dark:border-zink-500 peer-checked:bg-custom-50 dark:peer-checked:bg-custom-500/20 peer-checked:border-custom-300 dark:peer-checked:border-custom-700 peer-disabled:bg-slate-50 dark:peer-disabled:bg-slate-500/20 peer-disabled:border-slate-100 dark:peer-disabled:border-slate-800 peer-disabled:cursor-default peer-disabled:text-slate-500 dark:peer-disabled:text-zink-200">S</label>
-                                    </div>
-                                    <div>
-                                        <input id="selectSizeM" class="hidden peer" type="radio" value="M" name="selectSize" disabled>
-                                        <label for="selectSizeM" class="flex items-center justify-center w-8 h-8 text-xs border rounded-md cursor-pointer border-slate-200 dark:border-zink-500 peer-checked:bg-custom-50 dark:peer-checked:bg-custom-500/20 peer-checked:border-custom-300 dark:peer-checked:border-custom-700 peer-disabled:bg-slate-50 dark:peer-disabled:bg-slate-500/20 peer-disabled:border-slate-100 dark:peer-disabled:border-slate-800 peer-disabled:cursor-default peer-disabled:text-slate-500 dark:peer-disabled:text-zink-200">M</label>
-                                    </div>
-                                    <div>
-                                        <input id="selectSizeL" class="hidden peer" type="radio" value="L" name="selectSize">
-                                        <label for="selectSizeL" class="flex items-center justify-center w-8 h-8 text-xs border rounded-md cursor-pointer border-slate-200 dark:border-zink-500 peer-checked:bg-custom-50 dark:peer-checked:bg-custom-500/20 peer-checked:border-custom-300 dark:peer-checked:border-custom-700 peer-disabled:bg-slate-50 dark:peer-disabled:bg-slate-500/20 peer-disabled:border-slate-100 dark:peer-disabled:border-slate-800 peer-disabled:cursor-default peer-disabled:text-slate-500 dark:peer-disabled:text-zink-200">L</label>
-                                    </div>
-                                    <div>
-                                        <input id="selectSizeXL" class="hidden peer" type="radio" value="XL" name="selectSize">
-                                        <label for="selectSizeXL" class="flex items-center justify-center w-8 h-8 text-xs border rounded-md cursor-pointer border-slate-200 dark:border-zink-500 peer-checked:bg-custom-50 dark:peer-checked:bg-custom-500/20 peer-checked:border-custom-300 dark:peer-checked:border-custom-700 peer-disabled:bg-slate-50 dark:peer-disabled:bg-slate-500/20 peer-disabled:border-slate-100 dark:peer-disabled:border-slate-800 peer-disabled:cursor-default peer-disabled:text-slate-500 dark:peer-disabled:text-zink-200">XL</label>
-                                    </div>
-                                    <div>
-                                        <input id="selectSize2XL" class="hidden peer" type="radio" value="2XL" name="selectSize">
-                                        <label for="selectSize2XL" class="flex items-center justify-center w-8 h-8 text-xs border rounded-md cursor-pointer border-slate-200 dark:border-zink-500 peer-checked:bg-custom-50 dark:peer-checked:bg-custom-500/20 peer-checked:border-custom-300 dark:peer-checked:border-custom-700 peer-disabled:bg-slate-50 dark:peer-disabled:bg-slate-500/20 peer-disabled:border-slate-100 dark:peer-disabled:border-slate-800 peer-disabled:cursor-default peer-disabled:text-slate-500 dark:peer-disabled:text-zink-200">2XL</label>
-                                    </div> --}}
                                 </div>
-
-                                {{-- <h6 class="mt-5 mb-3 text-15">Available Offers (4)</h6>
-                                <ul class="flex flex-col gap-2">
-                                    <li><i data-lucide="tag" class="inline-block text-green-500 size-4 ltr:mr-1 rtl:ml-1 fill-green-200 dark:fill-green-500/20"></i> <span class="font-semibold">Bank Offer</span> 10% Instant Discount on Paypal, up to $1250 on orders of $5,000 and above <a href="#!" class="underline text-custom-500">T&C</a></li>
-                                    <li><i data-lucide="tag" class="inline-block text-green-500 size-4 ltr:mr-1 rtl:ml-1 fill-green-200 dark:fill-green-500/20"></i> <span class="font-semibold">Special Price</span> Get at flat $199 <a href="#!" class="underline text-custom-500">T&C</a></li>
-                                    <li><i data-lucide="tag" class="inline-block text-green-500 size-4 ltr:mr-1 rtl:ml-1 fill-green-200 dark:fill-green-500/20"></i> <span class="font-semibold">Partner Offer</span> Purchase now & get 1 surprise cashback coupon in Future <a href="#!" class="underline text-custom-500">Know More</a></li>
-                                    <li><i data-lucide="tag" class="inline-block text-green-500 size-4 ltr:mr-1 rtl:ml-1 fill-green-200 dark:fill-green-500/20"></i> <span class="font-semibold">Bank Offer</span> UPI Offer Men's Clothing <a href="#!" class="underline text-custom-500">T&C</a></li>
-                                </ul> --}}
-
-                                {{-- <div class="grid grid-cols-1 gap-5 my-5 xl:grid-cols-3">
-                                    <div class="flex items-center gap-5 p-4 border rounded-md border-slate-200 dark:border-zink-500">
-                                        <div class="flex items-center justify-center">
-                                            <i data-lucide="truck" class="w-6 h-6 text-slate-500 fill-slate-200 dark:text-zink-200 dark:fill-zink-500"></i>
-                                        </div>
-                                        <div>
-                                            <h6 class="mb-1">Estimated Delivery</h6>
-                                            <p class="text-slate-500 dark:text-zink-200">01 - 07 Dec, 2023</p>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center gap-5 p-4 border rounded-md border-slate-200 dark:border-zink-500">
-                                        <div class="flex items-center justify-center">
-                                            <i data-lucide="container" class="w-6 h-6 text-slate-500 fill-slate-200 dark:text-zink-200 dark:fill-zink-500"></i>
-                                        </div>
-                                        <div>
-                                            <h6 class="mb-1">Free Shipping & Returns</h6>
-                                            <p class="text-slate-500 dark:text-zink-200">On all orders over $200.00</p>
-                                        </div>
-                                    </div>
-                                </div> --}}
 
                                 <div class="mt-5">
                                     <h6 class="mb-3 text-15">Product Description:</h6>
                                     <p class="text-slate-500 dark:text-zink-200">{{ $product->description }}</p>
                                 </div>
-
-                                {{-- <div class="mt-5">
-                                    <h6 class="mb-3 text-15">Features:</h6>
-                                    <div class="overflow-x-auto">
-                                        <table class="w-full">
-                                            <tbody>
-                                                <tr>
-                                                    <th class="px-3.5 py-2.5 font-semibold border-b border-transparent w-64 ltr:text-left rtl:text-right text-slate-500 dark:text-zink-200">Type</th>
-                                                    <td class="px-3.5 py-2.5 border-b border-transparent">Round Neck</td>
-                                                </tr>
-                                                <tr>
-                                                    <th class="px-3.5 py-2.5 font-semibold border-b border-transparent w-64 ltr:text-left rtl:text-right text-slate-500 dark:text-zink-200">Sleeve</th>
-                                                    <td class="px-3.5 py-2.5 border-b border-transparent">Half Sleeve</td>
-                                                </tr>
-                                                <tr>
-                                                    <th class="px-3.5 py-2.5 font-semibold border-b border-transparent w-64 ltr:text-left rtl:text-right text-slate-500 dark:text-zink-200">Fit</th>
-                                                    <td class="px-3.5 py-2.5 border-b border-transparent">Regular</td>
-                                                </tr>
-                                                <tr>
-                                                    <th class="px-3.5 py-2.5 font-semibold border-b border-transparent w-64 ltr:text-left rtl:text-right text-slate-500 dark:text-zink-200">Fabric</th>
-                                                    <td class="px-3.5 py-2.5 border-b border-transparent">Cotton Blend</td>
-                                                </tr>
-                                                <tr>
-                                                    <th class="px-3.5 py-2.5 font-semibold border-b border-transparent w-64 ltr:text-left rtl:text-right text-slate-500 dark:text-zink-200">Pack of</th>
-                                                    <td class="px-3.5 py-2.5 border-b border-transparent">1</td>
-                                                </tr>
-                                                <tr>
-                                                    <th class="px-3.5 py-2.5 font-semibold border-b border-transparent w-64 ltr:text-left rtl:text-right text-slate-500 dark:text-zink-200">Product Code</th>
-                                                    <td class="px-3.5 py-2.5 border-b border-transparent">TWT1542</td>
-                                                </tr>
-                                                <tr>
-                                                    <th class="px-3.5 py-2.5 font-semibold border-b border-transparent w-64 ltr:text-left rtl:text-right text-slate-500 dark:text-zink-200">Ideal for</th>
-                                                    <td class="px-3.5 py-2.5 border-b border-transparent">Women</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div> --}}
 
                                 <h6 class="mt-5 mb-3 text-15">Ratings & Reviews</h6>
                                 <div class="grid grid-cols-1 gap-5 xl:grid-cols-12">
@@ -1223,69 +1136,11 @@
                                                         </div>
                                                     @endforeach
                                                 </div>
-
-
-
-                                                {{-- <div class="flex flex-col gap-3 mt-4">
-                                                    <div class="flex items-center gap-3">
-                                                        <div class="text-sm shrink-0">
-                                                            5 <i class="ml-1 text-yellow-500 align-middle ri-star-fill"></i>
-                                                        </div>
-                                                        <div class="w-full h-1.5 rounded-full bg-slate-200 dark:bg-zink-600">
-                                                            <div class="h-1.5 rounded-full bg-green-500" style="width: 79%"></div>
-                                                        </div>
-                                                        <div class="text-sm text-right w-9 shrink-0">
-                                                            1,210
-                                                        </div>
-                                                    </div>
-                                                    <div class="flex items-center gap-3">
-                                                        <div class="text-sm shrink-0">
-                                                            4 <i class="ml-1 text-yellow-500 align-middle ri-star-fill"></i>
-                                                        </div>
-                                                        <div class="w-full h-1.5 rounded-full bg-slate-200 dark:bg-zink-600">
-                                                            <div class="h-1.5 rounded-full bg-sky-500" style="width: 66%"></div>
-                                                        </div>
-                                                        <div class="text-sm text-right w-9 shrink-0">
-                                                            1,174
-                                                        </div>
-                                                    </div>
-                                                    <div class="flex items-center gap-3">
-                                                        <div class="text-sm shrink-0">
-                                                            3 <i class="ml-1 text-yellow-500 align-middle ri-star-fill"></i>
-                                                        </div>
-                                                        <div class="w-full h-1.5 rounded-full bg-slate-200 dark:bg-zink-600">
-                                                            <div class="h-1.5 rounded-full bg-purple-500" style="width: 45%"></div>
-                                                        </div>
-                                                        <div class="text-sm text-right w-9 shrink-0">
-                                                            762
-                                                        </div>
-                                                    </div>
-                                                    <div class="flex items-center gap-3">
-                                                        <div class="text-sm shrink-0">
-                                                            2 <i class="ml-1 text-yellow-500 align-middle ri-star-fill"></i>
-                                                        </div>
-                                                        <div class="w-full h-1.5 rounded-full bg-slate-200 dark:bg-zink-600">
-                                                            <div class="h-1.5 rounded-full bg-yellow-500" style="width: 22%"></div>
-                                                        </div>
-                                                        <div class="text-sm text-right w-9 shrink-0">
-                                                            274
-                                                        </div>
-                                                    </div>
-                                                    <div class="flex items-center gap-3">
-                                                        <div class="text-sm shrink-0">
-                                                            1 <i class="ml-1 text-yellow-500 align-middle ri-star-fill"></i>
-                                                        </div>
-                                                        <div class="w-full h-1.5 rounded-full bg-slate-200 dark:bg-zink-600">
-                                                            <div class="h-1.5 rounded-full bg-red-500" style="width: 5%"></div>
-                                                        </div>
-                                                        <div class="text-sm text-right w-9 shrink-0">
-                                                            32
-                                                        </div>
-                                                    </div>
-                                                </div> --}}
                                             </div>
                                         </div>
                                     </div><!--end col-->
+
+
                                     <div class="xl:col-span-8">
                                         <div class="flex items-center gap-3 mb-4">
                                             <h5 class="text-16 grow">Reviews</h5>
@@ -1297,7 +1152,7 @@
 
                                         <div class="mt-3">
                                             <div class="relative ltr:float-right rtl:float-left dropdown">
-                                                @if (auth()->user() && auth()->user()->id == $review->user->id )
+                                                @if (auth()->user() && ( auth()->user()->id == $review->user->id  || auth()->user()->role->name == 'admin' )   )
                                                 <button class="flex items-center justify-center size-[30px] dropdown-toggle p-0 text-slate-500 btn bg-slate-100 hover:text-white hover:bg-slate-600 focus:text-white focus:bg-slate-600 focus:ring focus:ring-slate-100 active:text-white active:bg-slate-600 active:ring active:ring-slate-100 dark:bg-slate-500/20 dark:text-slate-400 dark:hover:bg-slate-500 dark:hover:text-white dark:focus:bg-slate-500 dark:focus:text-white dark:active:bg-slate-500 dark:active:text-white dark:ring-slate-400/20" id="reviews1" data-bs-toggle="dropdown"><i data-lucide="more-horizontal" class="size-3"></i></button>
                                                 @endif
                                                 <ul class="absolute z-50 hidden py-2 mt-1 ltr:text-left rtl:text-right list-none bg-white rounded-md shadow-md dropdown-menu min-w-[10rem] dark:bg-zink-600" aria-labelledby="reviews1">
@@ -1334,108 +1189,6 @@
                                         @endforeach
 
 
-                                        {{-- <div class="pt-3 mt-3 border-t border-slate-200 dark:border-zink-500">
-                                            <div class="relative ltr:float-right rtl:float-left dropdown">
-                                                <button class="flex items-center justify-center size-[30px] dropdown-toggle p-0 text-slate-500 btn bg-slate-100 hover:text-white hover:bg-slate-600 focus:text-white focus:bg-slate-600 focus:ring focus:ring-slate-100 active:text-white active:bg-slate-600 active:ring active:ring-slate-100 dark:bg-slate-500/20 dark:text-slate-400 dark:hover:bg-slate-500 dark:hover:text-white dark:focus:bg-slate-500 dark:focus:text-white dark:active:bg-slate-500 dark:active:text-white dark:ring-slate-400/20" id="reviews2" data-bs-toggle="dropdown"><i data-lucide="more-horizontal" class="size-3"></i></button>
-                                                <ul class="absolute z-50 hidden py-2 mt-1 ltr:text-left rtl:text-right list-none bg-white rounded-md shadow-md dropdown-menu min-w-[10rem] dark:bg-zink-600" aria-labelledby="reviews2">
-                                                    <li>
-                                                        <a data-modal-target="addReviewsModal" class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="#!"><i data-lucide="file-edit" class="inline-block size-3 ltr:mr-1 rtl:ml-1"></i> <span class="align-middle">Edit</span></a>
-                                                    </li>
-                                                    <li>
-                                                        <a data-modal-target="deleteModal" class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="#!"><i data-lucide="trash-2" class="inline-block size-3 ltr:mr-1 rtl:ml-1"></i> <span class="align-middle">Delete</span></a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="flex items-center gap-3">
-                                                <div class="w-10 h-10 rounded-full shrink-0 bg-sky-100 dark:bg-sky-500/20">
-                                                    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAoHBwkHBgoJCAkLCwoMDxkQDw4ODx4WFxIZJCAmJSMgIyIoLTkwKCo2KyIjMkQyNjs9QEBAJjBGS0U+Sjk/QD3/2wBDAQsLCw8NDx0QEB09KSMpPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT3/wgARCAH0AfQDAREAAhEBAxEB/8QAGwABAAIDAQEAAAAAAAAAAAAAAAQFAgMGAQf/xAAXAQEBAQEAAAAAAAAAAAAAAAAAAgED/9oADAMBAAIQAxAAAAD7MAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaNR9ajwzNuJWMwAAAAAAAAAAAAAAAAAAAAAAAAAAQtU9o2gAB6WEriG0AAAAAAAAAAAAAAAAAAAAAAAAAqaU9gAAABsOi5pGAAAAAAAAAAAAAAAAAAAAAAAAIeud6AAAAABvx0vNkAAAAAAAAAAAAAAAAAAAAAAADnOiJoAAAAAC8hZSAAAAAAAAAAAAAAAAAAAAAAA1HLdQAAAAAAmY6LmAAAAAAAAAAAAAAAAAAAAAAAgUoLAAAAAADI6zkAAAAAAAAAAAAAAAAAAAAAAAqaU9gAAAAAAOp5NoAAAAAAAAAAAAAAAAAAAAAAKW1XQAAAAAADpeaTgAAAAAAAAAAAAAAAAAAAAAAUdq2gAAAAAAHSc0rAAAAAAAAAAAAAAAAAAAAAAAo7VtAAAAAAAOj5peAAAAAAAAAAAAAAAAAAAAAABTWqqAAAAAAAdPzb8AAAAAAAAAAAAAAAAAAAAAACtpR2AAAAAAHp1fJkAAAAAAAAAAAAAAAAAAAAAADScv1AAAAAACZjouYAAAAAAAAAAAAAAAAAAAAAAAc50RNAAAAAAXkLKQAAAAAAAAAAAAAAAAAAAAAAAha57oAAAAAG3HT82QAAAAAAAAAAAAAAAAAAAAAAABQWgUAAAAA6DmnYAAAAAAAAAAAAAAAAAAAAAAAAGBz3RF0AAABcwtZAAAAAAAAAAAAAAAAAAAAAAAAADApbV1AABmXULGQAAAAAAAAAAAAAAAAAAAAAAAAAAEXVfSLrA3EyVjLYAAAAAAAAAAAAAAAAAAAAAAAAAAYEbUrGQAABH14SMegAAAAAAAAAAAAAAAAAAAAAA8IuoFIeo+hIxdQl49AMCtpUWxMiVibKfLcAAAAAAAAAAAAAAAAAAAAeEClRTRoAADYSMZGsja8AAAJ0riUjAAAAAAAAAAAAAAAAAAAxKG0GgAAAAAAAAAA9LyFjIAAAAAAAAAAAAAAAAACgtAoAAAAAAAAAAAB0EJ0gAAAAAAAAAAAAAAAAIFKCwAAAAAAAAAAAA2nT8mQAAAAAAAAAAAAAAAAOc6ImgAAAAAAAAAAAAL2FjIAAAAAAAAAAAAAAADA5Xq8AAAAAAAAAAAAAJ8r+AAAAAAAAAAAAAAAAEPXO9AAAAAAAAAAAAAA246nmAAAAAAAAAAAAAAAArKUlgAAAAAAAAAAAAAOs5MgAAAAAAAAAAAAAAAU9qmgAAAAAAAAAAAAAHUc27AAAAAAAAAAAAAAAApLVlAAAAAAAAAAAAAAOk5pWAAAAAAAAAAAAAAABRWrqAAAAAAAAAAAAAAdFzTMAAAAAAAAAAAAAAACgtAoAAAAAAAAAAAAAB0PNNwAAAAAAAAAAAAAAAOftBoAAAAAAAAAAAAAB0EJ0gAAAAAAAAAAAAAABQ2r6AAAAAAAAAAAAAAdDzTcAAAAAAAAAAAAAAADSc90aNAAAAAAAAAAAAAWcrqHoAAAAAAAAAAAAAAABgU9q2ngAAAAAAAAAABtxcysJAAAAAAAAAAAAAAAAAAaSttX606AAAAAAAAHpLxYynyyAAAAAAAAAAAAAAAAAAAANGouo2tGtJq1iAAD0zNuN2JBJlLxmAAAAAAAAAAAAAAAAAAAAAAAADwxPDw9MjIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH//xAA8EAACAQICBQgGCQUBAAAAAAABAgMEBQAREjFBUFETISIwQFJhcRQjMjM0ciBCQ2KBkZKhsRA1U4KQwf/aAAgBAQABPwD/AJoy1kEPtyoMNeaVdRdvIYN8j2RPgX1NsLfnhb3BtSQYS7Uj/aFfMYjljlGcbq3kd71dzipc0HTk4DZiouE9RmGche6vMPpo7I2aMVPEYprxLEQJvWL++IKmOpj04mz4jaN6XO5FCYID0vrN1cE8lPIHjbI4o6tKyHSXmYe0OG8rlV+i03RPTfmXGvrKOpalnDjVqYcRhWDqGU5gjMHeNzn5esbup0R11mn06cxHWn8bwqZeRppJO6vX2mXkq5Rsfo7wvDlKEjvMB18TmKVHGtSDvC+t0YV8z2CmbTpYm4oN33w+uiH3T2C3/AQ/Lu++fEx/J2C2nO3w+W7758TH8nYLZ/b4vI/zu++r04W8COwUS6FFCPuDd96j0qRX7jdeil3CjWTlhVCIFGoDIbvqouXpZI+I6+1Q8rXJwTpHeNyp/R6xshkrdJeussGhTmU631eW8bpS+kU2ajN05x1tLTtUzrGu3WeAwihECqMgBkN5XSi5CXlU92/7HrLZReiw6b+8fX4DeckayxsjjNWGRGK6hejk4xnU3VWy2lMp5x0vqrvWSNZUKSKGU6xistLw5vBm6cNo+nFC8z6MaljihtawZSTZNJsGwb4qLfBU5l0ybvLzHEtjkHupA3nzYa2Vaa4SfIg4FBVH7B8R2iqfWgT5jiCyIuRmkLeC4ihjgXRiQKPDezzRx+26r5nLD3WlT7TS8hhHWRA6EFTqPUVNZDS5cq3OdgxHX00nszL+PNgEMMwQRvCe5U0HMX0jwXnxNe3PNDGF8WxJX1MvtTN5DmwSTzk/0pK6WkbonNdqnFNc4J9baDcG+i8iRDORwo8TiqvKqCtOMz3jiSR5XLuxZj/RJXjOaOynwOIrrVR63DjgwxDe0PNNGV8VxDUw1AzikDeG3ddXdooM1i9Y/wCwxPWz1JOm5y7o1dRHUzQ+7ldfI4F2qx9oD5qMG8VXeX9OHudU+uUjyGWGdnObsWPifpgkHMHI4pbtNDzSesTx14pqyKrXOM8+1Tr3O7rGhdzko1nFdc3qSUjJWL+ezo7RsGQkMNoxb7mJ8opiBJsPHc1zrjUSmND6pT+faQcsWyu9KjKP7xP3G5LtU8hS6Cnpyc34drpp2p51kXYcI4kRXXUwzG47pPy1a/dTojtllm06UxnWh/bcUr8lE7n6oJwSWJPHtlmk0K3R2OpG4rq+hb5PHIdtpH5Krifgw3Fe3ypkXi3bQcjhG041biAdw31vcr5nt1G2lRwn7g3DfD6+Ifd7dbjnQQ+W4b2c6xPBP/T261nO3Rfj/O4b18cPkHbrR/b08z/O4bx8eflHbrP8APmO4bzGy1mmR0WAyPbrTG0dCNMZZkkbhqKdKqIxyDyPDFVRyUkmTjm2NsPbLdbDIRLOMk1heO45IklQpIoZTsOKuzOmb050h3duCpUkMCCO0QU0tS+UaE+OwYo7THB05cpH/YbmnpYagZSoD47cT2Q64H/1bE1HPB7yJgOOsdjVSxyUEnwxDaqmX6mgOL4gs0MfPKTIfyGFVUXJQFHAbqko6eX24kOJLLA3sM6YexyfUlU+Yyw1pq1+oD5NhqGpTXA+DFINaMPwwQR9IIx1KThaaZzksTn/AFOEt1U+qFh582Es1S3taC+Zwli7835DEdppY9al/mOI4o4vdoq+Q3mQDrGOSj7i/lgwRHXEn6Rj0aH/AAx/pGBBENUSfpGBGg1Kv/NP/8QAHxEAAQQDAQEBAQAAAAAAAAAAAQACEVASMEAxIJAQ/9oACAECAQE/APzRhYlYrFYrE3AEoDQW2rRsIiyAnaRNkNzrAb3eWDfb9t+3gPte3gPte3gPte3gNe2/G8+WIO51i07SbNp2E2gM6ibYO0E3AKyUhSFkFlcQdIEqDYgFYqB/SJRH0G/GIWKirDUBohYhYhQNJaiIqAOgimA6iIpGjrNI3zsdfuom+9pom37e40Le4+0Le4+0LfO53tC3zud7Qt7j7QgoGewmkDuoupgUHIHkyCyq5WSyWQUjVIWQWSyP6Gf/xAAUEQEAAAAAAAAAAAAAAAAAAACw/9oACAEDAQE/AHgf/9k=" alt="" class="h-10 rounded-full">
-                                                </div>
-                                                <div class="grow">
-                                                    <h6 class="text-15"><a href="#!">Theodora Jones</a></h6>
-                                                    <p class="text-sm text-slate-500 dark:text-zink-200">on 20 July, 2023</p>
-                                                </div>
-                                            </div>
-                                            <div class="flex items-center gap-2 mt-4 mb-2 text-yellow-500">
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-line"></i>
-                                            </div>
-                                            <p class="text-slate-500 dark:text-zink-200">"Amazing! Fast, to the point, professional and really amazing to work with them!!!"</p>
-                                            <div class="flex items-center gap-3 mt-3">
-                                                <a href="#!" class="text-slate-500 shrink-0 count-button [&.active]:text-green-500 active"><i data-lucide="thumbs-up" class="inline-block size-3 ltr:mr-1 rtl:ml-1"></i> <span class="align-middle count-number">77</span></a>
-                                                <a href="#!" class="text-slate-500 shrink-0 count-button [&.active]:text-red-500 active"><i data-lucide="thumbs-down" class="inline-block size-3 ltr:mr-1 rtl:ml-1"></i> <span class="align-middle count-number">26</span></a>
-                                            </div>
-                                        </div>
-                                        <div class="pt-3 mt-3 border-t border-slate-200 dark:border-zink-500">
-                                            <div class="relative ltr:float-right rtl:float-left dropdown">
-                                                <button class="flex items-center justify-center size-[30px] dropdown-toggle p-0 text-slate-500 btn bg-slate-100 hover:text-white hover:bg-slate-600 focus:text-white focus:bg-slate-600 focus:ring focus:ring-slate-100 active:text-white active:bg-slate-600 active:ring active:ring-slate-100 dark:bg-slate-500/20 dark:text-slate-400 dark:hover:bg-slate-500 dark:hover:text-white dark:focus:bg-slate-500 dark:focus:text-white dark:active:bg-slate-500 dark:active:text-white dark:ring-slate-400/20" id="reviews3" data-bs-toggle="dropdown"><i data-lucide="more-horizontal" class="size-3"></i></button>
-                                                <ul class="absolute z-50 hidden py-2 mt-1 ltr:text-left rtl:text-right list-none bg-white rounded-md shadow-md dropdown-menu min-w-[10rem] dark:bg-zink-600" aria-labelledby="reviews3">
-                                                    <li>
-                                                        <a data-modal-target="addReviewsModal" class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="#!"><i data-lucide="file-edit" class="inline-block size-3 ltr:mr-1 rtl:ml-1"></i> <span class="align-middle">Edit</span></a>
-                                                    </li>
-                                                    <li>
-                                                        <a data-modal-target="deleteModal" class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="#!"><i data-lucide="trash-2" class="inline-block size-3 ltr:mr-1 rtl:ml-1"></i> <span class="align-middle">Delete</span></a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="flex items-center gap-3">
-                                                <div class="w-10 h-10 bg-yellow-100 rounded-full shrink-0 dark:bg-yellow-500/20">
-                                                    <img src="{{ asset('images/avatar-5.png') }}" alt="" class="h-10 rounded-full">
-                                                </div>
-                                                <div class="grow">
-                                                    <h6 class="text-15"><a href="#!">Jordane Dare</a></h6>
-                                                    <p class="text-sm text-slate-500 dark:text-zink-200">on 07 Dec, 2023</p>
-                                                </div>
-                                            </div>
-                                            <div class="flex items-center gap-2 mt-4 mb-2 text-yellow-500">
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-fill"></i>
-                                            </div>
-                                            <p class="text-slate-500 dark:text-zink-200">"Very nice design. Clean Code and easy customizable"</p>
-                                            <div class="flex items-center gap-3 mt-3">
-                                                <a href="#!" class="text-slate-500 shrink-0 count-button [&.active]:text-green-500 active"><i data-lucide="thumbs-up" class="inline-block size-3 ltr:mr-1 rtl:ml-1"></i> <span class="align-middle count-number">31</span></a>
-                                                <a href="#!" class="text-slate-500 shrink-0 count-button [&.active]:text-red-500 active"><i data-lucide="thumbs-down" class="inline-block size-3 ltr:mr-1 rtl:ml-1"></i> <span class="align-middle count-number">09</span></a>
-                                            </div>
-                                        </div>
-                                        <div class="pt-3 mt-3 border-t border-slate-200 dark:border-zink-500">
-                                            <div class="relative ltr:float-right rtl:float-left dropdown">
-                                                <button class="flex items-center justify-center size-[30px] dropdown-toggle p-0 text-slate-500 btn bg-slate-100 hover:text-white hover:bg-slate-600 focus:text-white focus:bg-slate-600 focus:ring focus:ring-slate-100 active:text-white active:bg-slate-600 active:ring active:ring-slate-100 dark:bg-slate-500/20 dark:text-slate-400 dark:hover:bg-slate-500 dark:hover:text-white dark:focus:bg-slate-500 dark:focus:text-white dark:active:bg-slate-500 dark:active:text-white dark:ring-slate-400/20" id="reviews4" data-bs-toggle="dropdown"><i data-lucide="more-horizontal" class="size-3"></i></button>
-                                                <ul class="absolute z-50 hidden py-2 mt-1 ltr:text-left rtl:text-right list-none bg-white rounded-md shadow-md dropdown-menu min-w-[10rem] dark:bg-zink-600" aria-labelledby="reviews4">
-                                                    <li>
-                                                        <a data-modal-target="addReviewsModal" class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="#!"><i data-lucide="file-edit" class="inline-block size-3 ltr:mr-1 rtl:ml-1"></i> <span class="align-middle">Edit</span></a>
-                                                    </li>
-                                                    <li>
-                                                        <a data-modal-target="deleteModal" class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="#!"><i data-lucide="trash-2" class="inline-block size-3 ltr:mr-1 rtl:ml-1"></i> <span class="align-middle">Delete</span></a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="flex items-center gap-3">
-                                                <div class="w-10 h-10 bg-green-100 rounded-full shrink-0 dark:bg-green-500/20">
-                                                    <img src="{{ asset('images/avatar-8.png') }}" alt="" class="h-10 rounded-full">
-                                                </div>
-                                                <div class="grow">
-                                                    <h6 class="text-15"><a href="#!">avern Ratke</a></h6>
-                                                    <p class="text-sm text-slate-500 dark:text-zink-200">on 10 Aug, 2023</p>
-                                                </div>
-                                            </div>
-                                            <div class="flex items-center gap-2 mt-4 mb-2 text-yellow-500">
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-fill"></i>
-                                            </div>
-                                            <p class="text-slate-500 dark:text-zink-200">"The best templates which is supported multiple programming languages with beautiful templates. thank you for the valuable template."</p>
-                                            <div class="flex items-center gap-3 mt-3">
-                                                <a href="#!" class="text-slate-500 shrink-0 count-button [&.active]:text-green-500 active"><i data-lucide="thumbs-up" class="inline-block size-3 ltr:mr-1 rtl:ml-1"></i> <span class="align-middle count-number">49</span></a>
-                                                <a href="#!" class="text-slate-500 shrink-0 count-button [&.active]:text-red-500 active"><i data-lucide="thumbs-down" class="inline-block size-3 ltr:mr-1 rtl:ml-1"></i> <span class="align-middle count-number">17</span></a>
-                                            </div>
-                                        </div> --}}
                                     </div><!--end col-->
                                 </div><!--end grid-->
                             </div>
@@ -1482,7 +1235,7 @@
             <button data-modal-close="addReviewsModal" class="transition-all duration-200 ease-linear text-slate-400 hover:text-red-500"><i data-lucide="x" class="size-5"></i></button>
         </div>
         <div class="max-h-[calc(theme('height.screen')_-_180px)] p-4 overflow-y-auto">
-            <form action="#!">
+            <form action="#!" id="AddReviewForm">
                 <div class="grid grid-cols-1 gap-5 xl:grid-cols-12">
 
                     @if (auth()->user())
@@ -1513,8 +1266,8 @@
                 </div>
 
                 <div class="flex justify-end gap-2 mt-4">
-                    <button data-modal-close="addReviewsModal" class="text-red-500 bg-white btn hover:text-red-500 hover:bg-red-100 focus:text-red-500 focus:bg-red-100 active:text-red-500 active:bg-red-100 dark:bg-zink-600 dark:hover:bg-red-500/10 dark:focus:bg-red-500/10 dark:active:bg-red-500/10">Cancel</button>
-                    <button type="submit" class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">Add Review</button>
+                    <button type="button" data-modal-close="addReviewsModal" class="text-red-500 bg-white btn hover:text-red-500 hover:bg-red-100 focus:text-red-500 focus:bg-red-100 active:text-red-500 active:bg-red-100 dark:bg-zink-600 dark:hover:bg-red-500/10 dark:focus:bg-red-500/10 dark:active:bg-red-500/10">Cancel</button>
+                    <button data-modal-close="addReviewsModal" type="submit" class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">Add Review</button>
                 </div>
             </form>
         </div>
@@ -2041,6 +1794,44 @@
 <script src="{{ asset('js/pages/apps-ecommerce-product-overview.init.js') }}"></script>
 <!-- App js -->
 <script src="{{ asset('js/app.js') }}"></script>
+
+<script src="{{ asset('js/jquery-3.7.1.min.js') }}"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#AddReviewForm').on('submit', function (e) {
+            e.preventDefault();
+
+            // Collect form data
+            var userID = $('#AddReviewForm input[name="userID"]').val();
+            var productIDs = $('#AddReviewForm input[name="productIDs"]').val();
+            var rate = $('#AddReviewForm select[name="rate"]').val();
+            var comment = $('#AddReviewForm textarea[name="comment"]').val();
+
+            $.ajax({
+                url: '{{ route('AddReview') }}',  // Define the route to handle the submission
+                type: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}',  // Laravel CSRF token for security
+                    user_id: userID,
+                    product_ids: productIDs,
+                    rating: rate,
+                    comment: comment
+                },
+                success: function (response) {
+                    // alert(response.message);
+                    // $('#AddReviewForm').reset();
+                    $('#addReviewsModal').addClass('hidden');
+                    $('#backDropDiv').addClass('hidden');
+
+                },
+                error: function (xhr, status, error) {
+                    alert('Something went wrong. Please try again.');
+                }
+            });
+        });
+    });
+</script>
 
 
 

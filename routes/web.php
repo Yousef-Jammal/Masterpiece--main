@@ -86,14 +86,12 @@ Route::prefix( 'auth')->group(function () {
     Route::post('login', [authController::class, 'login'])->name('login');
 
     Route::get('/logout', [authController::class, 'logout'])->name('logout');
-
-
 });
 
 
 
-
 Route::get('checkUser', function(){
+    // return config('session.lifetime');
     if (auth()->check()) {
         // User is logged in
         $user = auth()->user();
@@ -109,11 +107,18 @@ Route::prefix( 'user')->group(function () {
     Route::get('landingPage', [landingPage::class, 'show'])->name('show_landingPage');
     Route::get('shop',  [ProductsController::class, 'show_shop'])->name('show_products');
     Route::get('userCart/{userID}',  [CartItemsController::class, 'userCart'])->name('userCart');
+    Route::get('checkout',  [OrdersController::class, 'checkout'])->name('checkout');
 });
+
+
+Route::post('/AddReview', [ReviewsController::class, 'AddReview'])->name('AddReview');
 
 // for check the code discount
 Route::post('/check-discount-code', [DiscountCodeController::class, 'checkCode'])->name('discount_check');
 Route::post('/add-cartItme', [CartItemsController::class, 'addCart'])->name('cart_add');
+
+Route::delete('/delete_cartItem/{id}', [CartItemsController::class, 'destroy'])->name('delete_cartItem');
+Route::delete('/delete_AllCartItem', [CartItemsController::class, 'deleteAll'])->name('delete_AllCartItem');
 
 
 // start auth

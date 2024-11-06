@@ -5,15 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Http\Requests\StoreordersRequest;
 use App\Http\Requests\UpdateordersRequest;
-
+use Illuminate\Http\Request;
 class OrdersController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function checkout(Request $request)
     {
-        //
+        return view('user.apps-ecommerce-checkout');
     }
 
     /**

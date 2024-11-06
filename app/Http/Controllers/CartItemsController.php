@@ -17,8 +17,13 @@ class CartItemsController extends Controller
     {
         $cartItems = CartItem::where('user_id', 2)->get();
 
+        $totalPrice = $cartItems->map(function ($cartItem) {
+            return $cartItem->product->price ; // Assuming you have a quantity field
+        })->sum();
+
         return view('user.apps-ecommerce-cart', [
             'cartItems' => $cartItems,
+            'totalPrice' => $totalPrice,
         ]);
     }
 
@@ -91,8 +96,25 @@ class CartItemsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(CartItem $cart_items)
+    public function destroy($id)
     {
-        //
+        // Find the record by ID and delete it
+        $record = CartItem::find($id); // Replace YourModel with the actual model name
+        if ($record) {
+            $record->delete();
+            return response()->json(['success' => true]);
+        }
+
+        return response()->json(['success' => false, 'message' => 'Record not found'], 404);
     }
+
+    public function deleteAll(Request $request)
+    {
+        $userId = $request->user_id;
+
+        CartItem::where('user_id', $userId)->delete();
+
+        return response()->json(['message' => 'All items deleted successfully.']);
+    }
+
 }

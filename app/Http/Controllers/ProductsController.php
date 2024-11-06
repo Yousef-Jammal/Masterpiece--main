@@ -35,7 +35,6 @@ class ProductsController extends Controller
 
     public function dashboard()
     {
-        // $products = Product::all();
         $products = Product::paginate(6);
 
         $number_of_products = Product::distinct('id')->count('id');
