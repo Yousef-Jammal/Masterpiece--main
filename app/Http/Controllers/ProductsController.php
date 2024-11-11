@@ -128,9 +128,6 @@ class ProductsController extends Controller
      */
     public function show($code)
     {
-
-
-
         $product = Product::with('store.user')
             ->select(
                 DB::raw('GROUP_CONCAT(id) as ids'),
@@ -145,9 +142,9 @@ class ProductsController extends Controller
                 DB::raw('GROUP_CONCAT(DISTINCT color ORDER BY color) as colors'),
                 DB::raw('GROUP_CONCAT(DISTINCT size ORDER BY FIELD(size, "XS", "S", "M", "L", "XL", "XXL", "3XL")) as sizes')
             )
-                ->where('code', $code)
-                ->groupBy('code', 'title', 'price', 'status', 'gender', 'description', 'quantity')
-                ->first();
+            ->where('code', $code)
+            ->groupBy('code', 'title', 'price', 'status', 'gender', 'description', 'quantity')
+            ->first();
 
         $productObj = (object) [
             'code' => $product->code,
@@ -163,6 +160,19 @@ class ProductsController extends Controller
             'store' => $product->store,
         ];
 
+        // Generate colorSizeMap and sizeColorMap
+        $colorSizeMap = [];
+        $sizeColorMap = [];
+
+        // Query the products with the same code to get each color and size combination
+        $products = Product::where('code', $code)->get();
+        foreach ($products as $product) {
+
+            $colorSizeMap[$product->color][] = $product->size;
+
+            $sizeColorMap[$product->size][] = $product->color;
+        }
+
         // Get reviews for the product
         $reviews = Review::where('product_id', $productObj->ids[0])->get();
 
@@ -174,26 +184,28 @@ class ProductsController extends Controller
         $ratings = [];
         for ($i = 5; $i >= 1; $i--) {
             $count = $reviews->where('rating', $i)->count();
-            $percentage = $ratingCount > 0 ? ($count / $ratingCount) * 100 : 0; // Calculate percentage
+            $percentage = $ratingCount > 0 ? ($count / $ratingCount) * 100 : 0;
             $ratings[] = [
                 'stars' => $i,
                 'count' => $count,
-                'percentage' => number_format($percentage, 2), // Format percentage
+                'percentage' => number_format($percentage, 2),
             ];
         }
 
-        // Format average rating
         $currentAvRa = floor($averageRating) == $averageRating ? (int)$averageRating : number_format((float)$averageRating, 1, '.', '');
-
 
         return view('user.apps-ecommerce-product-overview', [
             'product' => $productObj,
+            'productIds' => implode(',', $productObj->ids),
             'reviews' => $reviews,
             'averageRating' => $currentAvRa,
             'ratingCount' => $ratingCount,
-            'ratings' => $ratings, // Pass the ratings data to the view
+            'ratings' => $ratings,
+            'colorSizeMap' => $colorSizeMap,
+            'sizeColorMap' => $sizeColorMap,
         ]);
     }
+
 
     /**
      * Show the form for editing the specified resource.

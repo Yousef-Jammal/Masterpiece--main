@@ -6,7 +6,9 @@ use App\Models\CartItem;
 use App\Models\DiscountCode;
 use App\Http\Requests\Storecart_itemsRequest;
 use App\Http\Requests\Updatecart_itemsRequest;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CartItemsController extends Controller
 {
@@ -15,10 +17,19 @@ class CartItemsController extends Controller
      */
     public function userCart($userID)
     {
-        $cartItems = CartItem::where('user_id', 2)->get();
+        // $cartItems = CartItem::where('user_id', $userID)->get();
+
+        $cartItems = CartItem::where('user_id', $userID)
+                        ->groupBy('product_code')
+                        ->select('*')
+                        ->get();
+
+
 
         $totalPrice = $cartItems->map(function ($cartItem) {
-            return $cartItem->product->price ; // Assuming you have a quantity field
+            $product = Product::where('code', $cartItem->product_code )->first();
+            return $product->price ;
+
         })->sum();
 
         return view('user.apps-ecommerce-cart', [
@@ -41,32 +52,39 @@ class CartItemsController extends Controller
     public function addCart(Request $request)
     {
 
-    // $request->validate([
-    //     'user_id' => 'required|exists:users,id',
-    //     'product_id' => 'required|exists:products,id',
-    // ]);
+        $cartItem = CartItem::where('user_id', $request->user_id)
+                            ->where('product_code', $request->product_code)
+                            ->first();
 
+        if ($cartItem) {
+            return response()->json([
+                'success' => false,
+                'message' => 'You have already this in your cart!',
+            ]);
+        } else {
+            foreach ( explode(',', $request->product_ids) as $productId) {
+                CartItem::create([
+                    'user_id' => $request->user_id,
+                    'product_id' => $productId,
+                    'color' => $request->product_color == false ? null : $request->product_color,
+                    'size' => $request->product_size == false ? null : $request->product_size,
+                    'quantity' => $request->quantity ?? 1,
+                    'product_code' => $request->product_code ?? null,
+                ]);
+            }
+        }
 
-    $cartItem = CartItem::where('user_id', $request->user_id)
-                        ->where('product_id', $request->product_id)
-                        ->first();
+        // $cartItemCount = CartItem::where('user_id', auth()->user()->id)->count();
+        $cartItemCount = CartItem::select('product_code', DB::raw('COUNT(*) as count'))
+                            ->where('user_id', auth()->user()->id)
+                            ->groupBy('product_code')
+                            ->get();
 
-    if ($cartItem) {
         return response()->json([
             'success' => true,
-            'message' => 'You have added it to cart!',
+            'message' => 'Product added to cart successfully!',
+            'cartItemCount' => $cartItemCount,
         ]);
-    } else {
-        CartItem::create([
-            'user_id' => $request->user_id,
-            'product_id' => $request->product_id,
-        ]);
-    }
-
-    return response()->json([
-        'success' => true,
-        'message' => 'Product added to cart successfully!',
-    ]);
     }
 
     /**

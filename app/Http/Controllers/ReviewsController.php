@@ -48,6 +48,7 @@ class ReviewsController extends Controller
 
         $productIDs = explode(',', $request->product_ids);
 
+
         foreach ($productIDs as $productID) {
 
             $productID = trim($productID);
@@ -63,10 +64,17 @@ class ReviewsController extends Controller
                 'review' => $request->comment,
             ]);
         }
+        // $reviews = Review::with('user')->get();
+        $reviews = Review::with('user')
+            ->join('products', 'reviews.product_id', '=', 'products.id')
+            ->select('products.code', 'reviews.user_id', 'reviews.rating', 'reviews.review')
+            ->groupBy('products.code', 'reviews.user_id', 'reviews.rating', 'reviews.review')
+            ->get();
 
         return response()->json([
             'status' => '200',
             'message' => 'success',
+            'reviews' => $reviews,
         ],
          200);
 

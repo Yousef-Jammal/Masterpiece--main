@@ -151,14 +151,22 @@
                     <div class="xl:col-span-12">
                         <div class="card" id="usersTable">
                             <div class="card-body">
-                                <div class="flex items-center">
-                                    <h6 class="text-15 grow">Users List</h6>
+                                <div class="flex items-center justify-between	">
+                                    {{-- <h6 class="text-15 grow">Users List</h6> --}}
+
+                                    {{-- <div class="relative xl:col-span-2"> --}}
+                                    <div class="relative  text-15 xl:col-span-2">
+                                        <input type="text" class="ltr:pl-8 rtl:pr-8 search form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="Search for name, email, phone number etc..." autocomplete="off">
+                                        <i data-lucide="search" class="inline-block size-4 absolute ltr:left-2.5 rtl:right-2.5 top-2.5 text-slate-500 dark:text-zink-200 fill-slate-100 dark:fill-zink-600"></i>
+                                    </div><!--end col-->
+
+
                                     <div class="shrink-0">
                                         <button data-modal-target="addUserModal" type="button" class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20"><i data-lucide="plus" class="inline-block size-4"></i> <span class="align-middle">Add User</span></button>
                                     </div>
                                 </div>
                             </div>
-                            <div class="!py-3.5 card-body border-y border-dashed border-slate-200 dark:border-zink-500">
+                            {{-- <div class="!py-3.5 card-body border-y border-dashed border-slate-200 dark:border-zink-500">
                                 <form action="#!">
                                     <div class="grid grid-cols-1 gap-5 xl:grid-cols-12">
                                         <div class="relative xl:col-span-2">
@@ -184,7 +192,7 @@
                                         </div><!--end col-->
                                     </div><!--end grid-->
                                 </form>
-                            </div>
+                            </div> --}}
                             <div class="card-body">
                                 <div class="-mx-5 -mb-5 overflow-x-auto">
                                     <table class="w-full border-separate table-custom border-spacing-y-1 whitespace-nowrap">

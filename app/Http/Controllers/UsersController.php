@@ -66,7 +66,11 @@ class UsersController extends Controller
      */
     public function show(User $users)
     {
-        //
+        $user_id = auth()->user()->id;
+        $user = User::find($user_id);
+        return view('pages.pages-account-settings' , [
+            'user'=> $user,
+        ]);
     }
 
     /**
@@ -80,9 +84,20 @@ class UsersController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateUsersRequest $request, User $users)
+    public function update(Request $request, User $users)
     {
-        //
+        $user_id = auth()->user()->id;
+        $user = User::find($user_id);
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            // 'password',
+        ]);
+
+        return view('pages.pages-account-settings' , [
+            'user'=> $user,
+        ]);
     }
 
     /**

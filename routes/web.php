@@ -36,6 +36,7 @@ use App\Models\CartItem;
 |
 */
 
+// Route::middleware(['is_admin'])->group(function () {
 Route::prefix('admin')->group(function () {
     Route::get('/', function () {
         return view('admin.index');
@@ -89,6 +90,8 @@ Route::prefix( 'auth')->group(function () {
 });
 
 
+Route::get('profile', [UsersController::class, 'show'])->name('profile');
+Route::put('profile', [UsersController::class, 'update'])->name('user-update-info');
 
 Route::get('checkUser', function(){
     // return config('session.lifetime');
@@ -107,7 +110,7 @@ Route::prefix( 'user')->group(function () {
     Route::get('landingPage', [landingPage::class, 'show'])->name('show_landingPage');
     Route::get('shop',  [ProductsController::class, 'show_shop'])->name('show_products');
     Route::get('userCart/{userID}',  [CartItemsController::class, 'userCart'])->name('userCart');
-    Route::get('checkout',  [OrdersController::class, 'checkout'])->name('checkout');
+    Route::get('checkout/{userID}',  [OrdersController::class, 'checkout'])->name('checkout');
 });
 
 

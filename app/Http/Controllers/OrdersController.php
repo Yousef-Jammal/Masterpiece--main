@@ -5,15 +5,35 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Http\Requests\StoreordersRequest;
 use App\Http\Requests\UpdateordersRequest;
+use App\Models\CartItem;
+use App\Models\Product;
 use Illuminate\Http\Request;
 class OrdersController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function checkout(Request $request)
+    public function checkout($userID)
     {
-        return view('user.apps-ecommerce-checkout');
+
+
+        $cartItems = CartItem::where('user_id', $userID)
+                        ->groupBy('product_code')
+                        ->select('*')
+                        ->get();
+
+
+
+        $totalPrice = $cartItems->map(function ($cartItem) {
+            $product = Product::where('code', $cartItem->product_code )->first();
+            return $product->price ;
+
+        })->sum();
+
+            return view('user.apps-ecommerce-checkout', [
+            'cartItems' => $cartItems,
+            'totalPrice' => $totalPrice,
+        ]);
     }
 
     /**

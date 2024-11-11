@@ -47,10 +47,10 @@ class authController extends Controller
         // }
 
         if ($request->has('remember')) {
-            Session::put('remember_me', true);
+            // Session::put('remember_me', true);
             config(['session.lifetime' => 43200]); // 30 days
         } else {
-            Session::put('remember_me', false);
+            // Session::put('remember_me', false);
             config(['session.lifetime' => 120]); // 2 hours
         }
 

@@ -7,7 +7,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use App\Models\CartItem;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\DB;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -28,7 +28,15 @@ class AppServiceProvider extends ServiceProvider
             $cartItemCount = 0;
 
             if (Auth::check()) {
-                $cartItemCount = CartItem::where('user_id', auth()->user()->id)->count();
+                // $cartItemCount = CartItem::where('user_id', auth()->user()->id)->count();
+                // $cartItemsCount = CartItem::select(DB::raw('COUNT(*) as count'))
+                //                     ->where('user_id', auth()->user()->id)
+                //                     ->groupBy('product_code')
+                //                     ->get();
+                $cartItemCount = CartItem::where('user_id', auth()->user()->id)
+                                    ->groupBy('product_id')
+                                    ->count();
+                // $cartItemCount = $cartItemsCount;
             }
 
             $view->with('cartItemCount', $cartItemCount);
