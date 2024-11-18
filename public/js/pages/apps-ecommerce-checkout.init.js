@@ -15,9 +15,9 @@ deliveryOptions.forEach(option => {
     option.addEventListener('change', inputSpinComponents);
 });
 
-document.getElementById("placeOrder").addEventListener('click', function(){
-    
-});
+// document.getElementById("placeOrder").addEventListener('click', function(){
+
+// });
 
 function inputSpinComponents() {
 

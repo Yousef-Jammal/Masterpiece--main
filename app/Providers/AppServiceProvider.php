@@ -28,15 +28,11 @@ class AppServiceProvider extends ServiceProvider
             $cartItemCount = 0;
 
             if (Auth::check()) {
-                // $cartItemCount = CartItem::where('user_id', auth()->user()->id)->count();
-                // $cartItemsCount = CartItem::select(DB::raw('COUNT(*) as count'))
-                //                     ->where('user_id', auth()->user()->id)
-                //                     ->groupBy('product_code')
-                //                     ->get();
                 $cartItemCount = CartItem::where('user_id', auth()->user()->id)
-                                    ->groupBy('product_id')
+                                    ->select('product_code')
+                                    ->groupBy('product_code')
+                                    ->get()
                                     ->count();
-                // $cartItemCount = $cartItemsCount;
             }
 
             $view->with('cartItemCount', $cartItemCount);

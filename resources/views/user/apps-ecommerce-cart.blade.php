@@ -168,7 +168,7 @@
                             <div class="card-body">
                                 <div class="grid grid-cols-1 gap-4 lg:grid-cols-12">
                                     <div class="p-4 rounded-md lg:col-span-2 bg-slate-100 dark:bg-zink-600">
-                                        <img src="{{ asset('images/img-08.png') }}" alt="">
+                                        <img src="{{ asset('images/product/' . $cartItem->product->images->first()->name ) }}" alt="">
                                     </div><!--end col-->
                                     <div class="flex flex-col lg:col-span-4">
                                         <div>
@@ -189,11 +189,21 @@
                                             <p class="mb-3 text-slate-500 dark:text-zink-200">Size: <span class="text-slate-800 dark:text-zink-50">{{ $cartItem->product->size }}</span></p>
                                         </div>
                                         <div class="flex items-center gap-2 mt-auto">
-                                            <div class="inline-flex p-2 text-center border rounded input-step border-slate-200 dark:border-zink-500">
+                                            {{-- <div class="inline-flex p-2 text-center border rounded input-step border-slate-200 dark:border-zink-500">
                                                 <button type="button" class="border w-7 leading-[15px] minus-value bg-slate-200 dark:bg-zink-600 dark:border-zink-600 rounded transition-all duration-200 ease-linear border-slate-200 text-slate-500 dark:text-zink-200 hover:bg-custom-500 dark:hover:bg-custom-500 hover:text-custom-50 dark:hover:text-custom-50 hover:border-custom-500 dark:hover:border-custom-500 focus:bg-custom-500 dark:focus:bg-custom-500 focus:border-custom-500 dark:focus:border-custom-500 focus:text-custom-50 dark:focus:text-custom-50"><i data-lucide="minus" class="inline-block w-4 h-4"></i></button>
-                                                <input type="number" class="text-center ltr:pl-2 rtl:pr-2 w-15 h-7 products-quantity dark:bg-zink-700 focus:shadow-none" value="1" min="0" max="100" readonly>
+                                                <input id="cartCount" data-id="{{ $cartItem->id }}" type="number" class="text-center ltr:pl-2 rtl:pr-2 w-15 h-7 products-quantity dark:bg-zink-700 focus:shadow-none" value="1" min="0" max="100" readonly>
                                                 <button type="button" class="transition-all duration-200 ease-linear border rounded border-slate-200 bg-slate-200 dark:bg-zink-600 dark:border-zink-600 w-7 plus-value text-slate-500 dark:text-zink-200 hover:bg-custom-500 dark:hover:bg-custom-500 hover:text-custom-50 dark:hover:text-custom-50 hover:border-custom-500 dark:hover:border-custom-500 focus:bg-custom-500 dark:focus:bg-custom-500 focus:border-custom-500 dark:focus:border-custom-500 focus:text-custom-50 dark:focus:text-custom-50"><i data-lucide="plus" class="inline-block w-4 h-4"></i></button>
+                                            </div> --}}
+                                            <div class="inline-flex p-2 text-center border rounded input-step border-slate-200 dark:border-zink-500">
+                                                <button type="button" class="minus-value border w-7 leading-[15px] bg-slate-200 dark:bg-zink-600 rounded">
+                                                    <i data-lucide="minus" class="inline-block w-4 h-4"></i>
+                                                </button>
+                                                <input id="cartCount" data-id="{{ $cartItem->id }}" type="number" class="products-quantity w-15 h-7 text-center" value="{{ $cartItem->quantity }}" min="1" max="100" readonly>
+                                                <button type="button" class="plus-value border w-7 bg-slate-200 dark:bg-zink-600 rounded">
+                                                    <i data-lucide="plus" class="inline-block w-4 h-4"></i>
+                                                </button>
                                             </div>
+
                                             {{-- <button data-modal-target="deleteModal" type="button" class="flex items-center justify-center size-[37.5px] p-0 text-red-500 bg-red-100 btn hover:text-white hover:bg-red-600 focus:text-white focus:bg-red-600 focus:ring focus:ring-red-100 active:text-white active:bg-red-600 active:ring active:ring-red-100 dark:bg-red-500/20 dark:text-red-500 dark:hover:bg-red-500 dark:hover:text-white dark:focus:bg-red-500 dark:focus:text-white dark:active:bg-red-500 dark:active:text-white dark:ring-red-400/20 remove-button"><i data-lucide="trash-2" class="w-4 h-4"></i></button> --}}
                                             <button  data-id="{{ $cartItem->id }}" id="deleteRecord" type="button" class="flex items-center justify-center size-[37.5px] p-0 text-red-500 bg-red-100 btn hover:text-white hover:bg-red-600 focus:text-white focus:bg-red-600 focus:ring focus:ring-red-100 active:text-white active:bg-red-600 active:ring active:ring-red-100 dark:bg-red-500/20 dark:text-red-500 dark:hover:bg-red-500 dark:hover:text-white dark:focus:bg-red-500 dark:focus:text-white dark:active:bg-red-500 dark:active:text-white dark:ring-red-400/20 remove-button"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
                                         </div>
@@ -215,7 +225,7 @@
                     <div class="xl:col-span-3">
                         <div class="sticky top-[calc(theme('spacing.header')_*_1.3)] mb-5">
 
-                            <div class="card">
+                            <div class="card hidden">
                                 <div class="card-body">
                                     <form id="discountForm">
                                         <div class="mb-3">
@@ -236,7 +246,7 @@
                                     <div class="overflow-x-auto">
                                         <table class="w-full">
                                             <tbody class="table-total">
-                                                <tr>
+                                                <tr class="hidden">
                                                     <td class="py-2 text-slate-500 dark:text-zink-200">
                                                         Sub Total
                                                     </td>
@@ -244,7 +254,7 @@
                                                         ${{ $totalPrice }}
                                                     </td>
                                                 </tr>
-                                                <tr>
+                                                <tr class="hidden">
                                                     <td class="py-2 text-slate-500 dark:text-zink-200">
                                                         Discounts
                                                         <span id="Item_Discounts_Precentage">
@@ -399,6 +409,58 @@ $(document).ready(function() {
             }
         });
     });
+
+     // زر زيادة الكمية
+     $('.plus-value').on('click', function() {
+        let input = $(this).siblings('input');
+        let currentValue = parseInt(input.val());
+        let maxValue = parseInt(input.attr('max'));
+        let recordId = input.data('id');
+
+        if (currentValue < maxValue) {
+            // input.val(currentValue + 1);
+            updateCartQuantity(recordId, currentValue );
+        }
+    });
+
+    // زر تقليل الكمية
+    $('.minus-value').on('click', function() {
+        let input = $(this).siblings('input');
+        let currentValue = parseInt(input.val());
+        let minValue = parseInt(input.attr('min'));
+        let recordId = input.data('id');
+
+        if (currentValue > minValue) {
+            // input.val(currentValue - 1);
+            updateCartQuantity(recordId, currentValue );
+        }
+    });
+
+    // تحديث الكمية باستخدام Ajax
+    function updateCartQuantity(recordId, newQuantity) {
+        let url = `{{ route('change_cartItem_quantity', ':id') }}`.replace(':id', recordId);
+
+        $.ajax({
+            url: url,
+            type: 'PUT',
+            data: {
+                quantity: newQuantity
+            },
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            },
+            success: function(response) {
+                if (response.success) {
+                    console.log('Quantity updated successfully');
+                } else {
+                    console.log('Failed to update quantity');
+                }
+            },
+            error: function(xhr) {
+                console.log('Error: ' + xhr.status + ' - ' + xhr.statusText);
+            }
+        });
+    }
 
     // التعامل مع زر الحذف
     $('#deleteRecord').on('click', function() {

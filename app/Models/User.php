@@ -59,6 +59,20 @@ class User extends Authenticatable
     {
         return $this->hasOne(Store::class);
     }
+
+
+    public function paymentInfo()
+    {
+        return $this->hasOne(Payment::class);
+    }
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
+    public function wishs()
+    {
+        return $this->hasMany(Wishlist::class);
+    }
 //     public function store()
 // {
 //     return $this->belongsTo(Store::class);

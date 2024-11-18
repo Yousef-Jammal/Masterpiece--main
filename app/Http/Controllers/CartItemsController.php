@@ -19,18 +19,26 @@ class CartItemsController extends Controller
     {
         // $cartItems = CartItem::where('user_id', $userID)->get();
 
-        $cartItems = CartItem::where('user_id', $userID)
-                        ->groupBy('product_code')
-                        ->select('*')
-                        ->get();
+        // $cartItems = CartItem::where('user_id', $userID)
+        //                 ->groupBy('product_code')
+        //                 ->select('*')
+        //                 ->get();
 
 
 
-        $totalPrice = $cartItems->map(function ($cartItem) {
-            $product = Product::where('code', $cartItem->product_code )->first();
-            return $product->price ;
+        // $totalPrice = $cartItems->map(function ($cartItem) {
+        //     $product = Product::where('code', $cartItem->product_code )->first();
+        //     return $product->price ;
 
-        })->sum();
+        // })->sum();
+
+        $totalPrice = 0;
+        $cartItems = CartItem::where('user_id', $userID)->get();
+
+        foreach($cartItems as $cartItem)
+        {
+            $totalPrice += $cartItem->product->price * $cartItem->quantity ;
+        }
 
         return view('user.apps-ecommerce-cart', [
             'cartItems' => $cartItems,
@@ -74,11 +82,11 @@ class CartItemsController extends Controller
             }
         }
 
-        // $cartItemCount = CartItem::where('user_id', auth()->user()->id)->count();
-        $cartItemCount = CartItem::select('product_code', DB::raw('COUNT(*) as count'))
-                            ->where('user_id', auth()->user()->id)
+        $cartItemCount = CartItem::where('user_id', auth()->user()->id)
+                            ->select('product_code')
                             ->groupBy('product_code')
-                            ->get();
+                            ->get()
+                            ->count();
 
         return response()->json([
             'success' => true,
@@ -106,10 +114,26 @@ class CartItemsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Updatecart_itemsRequest $request, CartItem $cart_items)
+    public function update(Updatecart_itemsRequest $request,  $id)
     {
-        //
+        return $id;
     }
+
+    public function changeQuantity(Request $request, $id) {
+        $cartItem = CartItem::find($id);
+
+        if ($cartItem) {
+            $newQuantity = $request->input('quantity');
+            $cartItem->quantity = $newQuantity;
+            $cartItem->save();
+
+            return response()->json(['success' => true]);
+        }
+
+        return response()->json(['success' => false, 'message' => 'Item not found']);
+    }
+
+
 
     /**
      * Remove the specified resource from storage.

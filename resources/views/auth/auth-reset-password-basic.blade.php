@@ -75,9 +75,9 @@
                     <p class="mb-8 text-slate-500 dark:text-zink-200">Reset your Tailwick password</p>
                 </div>
 
-                <div class="px-4 py-3 mb-6 text-sm text-yellow-500 border border-transparent rounded-md bg-yellow-50 dark:bg-yellow-400/20">
+                {{-- <div class="px-4 py-3 mb-6 text-sm text-yellow-500 border border-transparent rounded-md bg-yellow-50 dark:bg-yellow-400/20">
                     Provide your email address, and instructions will be sent to you
-                </div>
+                </div> --}}
 
                 <form autocomplete="off" action="index.html">
                     <div>
@@ -88,7 +88,7 @@
                         <button type="submit" class="w-full text-white transition-all duration-200 ease-linear btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">Send Reset Link</button>
                     </div>
                     <div class="mt-4 text-center">
-                        <p class="mb-0">Wait, I remember my password... <a href="auth-login-basic.html" class="underline fw-medium text-custom-500"> Click here </a> </p>
+                        <p class="mb-0">Wait, I remember my password... <a href="{{ route('show_login') }}" class="underline fw-medium text-custom-500"> Click here </a> </p>
                     </div>
                 </form>
             </div>

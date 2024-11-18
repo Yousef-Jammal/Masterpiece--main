@@ -423,6 +423,104 @@ File: Common Plugins Js File
             if (modalId) {
                 element.addEventListener('click', function () {
                     toggleElementState(modalId, true, 200);
+                    let currentModal = document.getElementById(modalId)
+
+                    if(element.getAttribute('data-this-id')){
+                        let userId = element.getAttribute('data-this-id');
+                        let userIdInput = currentModal.querySelector('[name=this_id]');
+                        userIdInput.value = userId;
+                    }
+
+                    if(element.getAttribute('data-user-info')){
+                        let userInfo = JSON.parse(element.getAttribute('data-user-info'));
+
+                        let userIdInput = currentModal.querySelector('[name=this_id]');
+                        let userNameInput = currentModal.querySelector('[name=name]');
+                        let userEmailInput = currentModal.querySelector('[name=email]');
+                        let userPhoneNumberInput = currentModal.querySelector('[name=phone]');
+                        let userPasswordInput = currentModal.querySelector('[name=password]');
+
+                        userIdInput.value = userInfo.id;
+                        userNameInput.value = userInfo.name;
+                        userEmailInput.value = userInfo.email;
+                        userPhoneNumberInput.value = userInfo.phone;
+                        // userPasswordInput.value = userInfo.password;
+                    }
+
+                    if(element.getAttribute('data-review-info')){
+                        let reviewInfo = JSON.parse(element.getAttribute('data-review-info'));
+
+                        let userIdInput = currentModal.querySelector('[name=this_id]');
+                        let userNameIdInput = currentModal.querySelector('[name=user_id]');
+                        let userProductIdInput = currentModal.querySelector('[name=product_ids]');
+                        let userRateInput = currentModal.querySelector('[name=rate]');
+                        let userCommentInput = currentModal.querySelector('[name=comment]');
+
+                        userIdInput.value = reviewInfo.id;
+                        userNameIdInput.value = reviewInfo.user_id;
+                        // userProductIdInput.value = reviewInfo.email;
+                        userRateInput.value = reviewInfo.rating;
+                        userCommentInput.value = reviewInfo.review;
+                        // userPasswordInput.value = reviewInfo.password;
+                    }
+
+                    if(element.getAttribute('data-store-info')){
+                        let sellerInfo = JSON.parse(element.getAttribute('data-store-info'));
+                        let user = JSON.parse(element.getAttribute('data-user'));
+
+
+                        let thisIdInput = currentModal.querySelector('[name=this_id]');
+                        let companyNameInput = currentModal.querySelector('[name=companyName]');
+                        let companyDescriptionInput = currentModal.querySelector('[name=companyDescription]');
+                        let userIdInput = currentModal.querySelector('[name=userID]');
+
+
+                        thisIdInput.value = sellerInfo.id;
+                        userIdInput.value = user.id;
+                        companyNameInput.value = sellerInfo.name;
+                        companyDescriptionInput.value = sellerInfo.discrption;
+                    }
+
+                    if(element.getAttribute('data-category-info')){
+                        let categoryInfo = JSON.parse(element.getAttribute('data-category-info'));
+
+                        let thisIdInput = currentModal.querySelector('[name=this_id]');
+                        let categoryNameInput = currentModal.querySelector('[name=name]');
+
+                        thisIdInput.value = categoryInfo.id;
+                        categoryNameInput.value = categoryInfo.name;
+                    }
+
+                    if(element.getAttribute('data-discountCode-info')){
+                        let discountCodeInfo = JSON.parse(element.getAttribute('data-discountCode-info'));
+                        console.log(discountCodeInfo)
+
+                        let thisIdInput = currentModal.querySelector('[name=this_id]');
+                        let discountCodeInput = currentModal.querySelector('[name=code]');
+                        let discountAmountInput = currentModal.querySelector('[name=discount_amount]');
+                        let discountPercentageInput = currentModal.querySelector('[name=discount_percentage]');
+                        let maxUsesInput = currentModal.querySelector('[name=max_uses]');
+                        let usedCountCodeInput = currentModal.querySelector('[name=used_count]');
+                        let startDateCodeInput = currentModal.querySelector('[name=start_date]');
+                        let endDateCodeInput = currentModal.querySelector('[name=end_date]');
+                        let isActiveCodeInput = currentModal.querySelector('[name=is_active]');
+
+
+                        let startDateValue = discountCodeInfo.start_date.split(' ')[0]; // Get only the date part
+                        let endDateValue = discountCodeInfo.end_date.split(' ')[0]; // Get only the date part
+
+
+                        thisIdInput.value = discountCodeInfo.id;
+
+                        discountCodeInput.value = discountCodeInfo.code ;
+                        discountAmountInput.value = discountCodeInfo.discount_amount ;
+                        discountPercentageInput.value = discountCodeInfo.discount_percentage ;
+                        maxUsesInput.value = discountCodeInfo.max_uses ;
+                        usedCountCodeInput.value = discountCodeInfo.used_count ;
+                        startDateCodeInput.value = startDateValue;
+                        endDateCodeInput.value = endDateValue ;
+                        isActiveCodeInput.value = discountCodeInfo.is_active ;
+                    }
                 });
             }
         });
@@ -647,6 +745,7 @@ var toggleButtons = document.querySelectorAll('.toggle-button');
 toggleButtons.forEach(button => {
     button.addEventListener("click", function () {
         // Toggle the 'inactive' and 'active' classes on the clicked button
+        console.log('hi');
         button.classList.toggle("active");
         button.classList.toggle("inactive");
     });

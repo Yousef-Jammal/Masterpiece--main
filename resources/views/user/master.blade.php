@@ -14,9 +14,15 @@
     <script src="{{ asset('js/layout.js') }}"></script>
     <!-- Icons CSS -->
     <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
         #alertForAddCart {
             opacity: 0;
-            transform: translateX(100%);
+            transform: translateX(220%);
             transition: all 0.3s ease;
         }
 
@@ -457,6 +463,16 @@
                             <li>
                                 <a href="{{ route('show_products') }}" class="block md:inline-block px-4 md:px-3 py-2.5 md:py-0.5 text-15 font-medium text-slate-800 transition-all duration-300 ease-linear hover:text-custom-500 [&.active]:text-custom-500 dark:text-zinc-200 dark:hover:text-custom-500 dark:[&.active]:text-custom-500">Shop</a>
                             </li>
+                            @if(auth()->user())
+                            <li>
+                                <a href="{{ route('show_wishList', auth()->user()->id ) }}" class="block md:inline-block px-4 md:px-3 py-2.5 md:py-0.5 text-15 font-medium text-slate-800 transition-all duration-300 ease-linear hover:text-custom-500 [&.active]:text-custom-500 dark:text-zinc-200 dark:hover:text-custom-500 dark:[&.active]:text-custom-500">WishList</a>
+                            </li>
+                            @endif
+                            @if(auth()->user() && auth()->user()->role_id == 3)
+                            <li>
+                                <a href="{{ route('admin_main', auth()->user()->id ) }}" class="block md:inline-block px-4 md:px-3 py-2.5 md:py-0.5 text-15 font-medium text-slate-800 transition-all duration-300 ease-linear hover:text-custom-500 [&.active]:text-custom-500 dark:text-zinc-200 dark:hover:text-custom-500 dark:[&.active]:text-custom-500">My Store</a>
+                            </li>
+                            @endif
                             {{-- <li>
                                 <a href="#features" class="block md:inline-block px-4 md:px-3 py-2.5 md:py-0.5 text-15 font-medium text-slate-800 transition-all duration-300 ease-linear hover:text-custom-500 [&.active]:text-custom-500 dark:text-zinc-200 dark:hover:text-custom-500 dark:[&.active]:text-custom-500">Features</a>
                             </li>
@@ -1079,6 +1095,7 @@
 <script src="{{ asset('libs/lucide/umd/lucide.js') }}"></script>
 <script src="{{ asset('js/tailwick.bundle.js') }}"></script>
 
+<script src="{{ asset('js/validations/allValidationFunction.js') }}"></script>
 
 @yield('script')
 <!-- App js -->

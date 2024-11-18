@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Http\Requests\StoreUsersRequest;
 use App\Http\Requests\UpdateUsersRequest;
-
+use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 class UsersController extends Controller
 {
     /**
@@ -22,7 +24,7 @@ class UsersController extends Controller
         // $number_of_products = Product::distinct('code')->count('id');
 
 
-        return view('admin.apps-users-list',  ['users' => $users, 'number_of_users' => $number_of_users]);
+        return view('admin.users',  ['users' => $users, 'number_of_users' => $number_of_users]);
 
     }
 
@@ -67,12 +69,31 @@ class UsersController extends Controller
     public function show(User $users)
     {
         $user_id = auth()->user()->id;
+        $orders = Order::where('user_id', '=', $user_id)->get();
         $user = User::find($user_id);
         return view('pages.pages-account-settings' , [
             'user'=> $user,
+            'orders'=> $orders,
         ]);
     }
 
+    public function updateUserInfo(Request $request)
+    {
+        $user = User::find($request->this_id);
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+        ]);
+        return redirect()->route("amdin_users");
+    }
+
+    public function deleteUser(Request $request)
+    {
+        $user = User::find($request->this_id);
+        $user->delete();
+        return redirect()->route("amdin_users");
+    }
     /**
      * Show the form for editing the specified resource.
      */
@@ -81,10 +102,39 @@ class UsersController extends Controller
         //
     }
 
+
+
+    public function changePassword(Request $request)
+    {
+        $request->validate([
+            'current_password' => 'required',
+            'new_password' => 'required|min:8|confirmed',
+        ], [
+            'current_password.required' => 'يرجى إدخال كلمة المرور الحالية.',
+            'new_password.required' => 'يرجى إدخال كلمة المرور الجديدة.',
+            'new_password.min' => 'يجب أن تكون كلمة المرور الجديدة 8 أحرف على الأقل.',
+            'new_password.confirmed' => 'تأكيد كلمة المرور الجديدة لا يتطابق.',
+        ]);
+
+        $user = Auth::user();
+
+        // التحقق من كلمة المرور الحالية
+        if (!Hash::check($request->current_password, $user->password)) {
+            return back()->withErrors(['current_password' => 'The current password is incorrect.']);
+        }
+
+        // تحديث كلمة المرور
+        $user->password = Hash::make($request->new_password);
+        $user->save();
+
+        return back()->with('success', 'Password changed successfully.');
+    }
+
+
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, User $users)
+    public function update(Request $request, $id)
     {
         $user_id = auth()->user()->id;
         $user = User::find($user_id);
@@ -95,9 +145,10 @@ class UsersController extends Controller
             // 'password',
         ]);
 
-        return view('pages.pages-account-settings' , [
-            'user'=> $user,
-        ]);
+        // return view('pages.pages-account-settings' , [
+        //     'user'=> $user,
+        // ]);
+        return redirect()->route('profile');
     }
 
     /**

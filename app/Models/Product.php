@@ -62,6 +62,10 @@ class Product extends Model
     {
         return $this->belongsTo(Store::class);
     }
+    public function wishs()
+    {
+        return $this->hasMany(Wishlist::class);
+    }
 
     public function images()
     {

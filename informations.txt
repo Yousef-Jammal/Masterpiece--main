@@ -1,0 +1,10 @@
+DISCOUNT10
+PERCENT15
+
+user:
+	ahmed123@gmail.com
+	Password@123
+
+admin:
+	ywsfalsaydh@gmail.com
+	Password@123

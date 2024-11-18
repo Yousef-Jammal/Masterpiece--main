@@ -309,7 +309,7 @@
                                 </div>
                                 <div class="flex flex-col items-center mt-8 md:flex-row">
                                     <div class="mb-4 grow md:mb-0">
-                                        <p class="text-slate-500 dark:text-zink-200">Showing <b>10</b> of <b>57</b> Results</p>
+                                        {{-- <p class="text-slate-500 dark:text-zink-200">Showing <b>10</b> of <b>57</b> Results</p> --}}
                                     </div>
                                     {{-- {{ $reviews->links('vendor.pagination.custom-pagination') }} --}}
                                     {{-- <ul class="flex flex-wrap items-center gap-2">

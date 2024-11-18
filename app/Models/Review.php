@@ -14,6 +14,7 @@ class Review extends Model
      *
      * @var array
      */
+    protected $table = 'reviews';
     protected $fillable = [
         'user_id',
         'product_id',

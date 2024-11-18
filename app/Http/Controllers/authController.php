@@ -10,6 +10,9 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
 
+use App\Mail\SampleMail;
+use Illuminate\Support\Facades\Mail;
+
 
 
 
@@ -97,8 +100,10 @@ class authController extends Controller
 
           if ($user->role->id == '1') {
             return redirect()->route('admin_main');
+        } elseif($user->role->id == '2') {
+                return view('admin_main');
         } else {
-              return view('landing_pages.product-landing');
+                return view('landing_pages.product-landing');
           }
       }
 
@@ -110,4 +115,19 @@ class authController extends Controller
           $request->session()->regenerateToken();
           return redirect()->route('show_login');
       }
+
+      public function showForgotPasswordForm(Request $request)
+      {
+        return view('auth.auth-reset-password-basic');
+      }
+
+
+
+    public function sendSampleEmail()
+    {
+        $recipient = 'recipient@example.com';
+        Mail::to($recipient)->send(new SampleMail());
+
+        return "Email sent successfully!";
+    }
 }

@@ -26,6 +26,8 @@ class Order extends Model
         'zip_code',
         'delivery',
         'payments_information_id',
+        'discount_code',
+        'delivery',
     ];
 
     /**
@@ -50,5 +52,11 @@ class Order extends Model
     public function paymentInformation()
     {
         return $this->belongsTo(Payment::class, 'payments_information_id');
+    }
+
+
+    public function orderItems()
+    {
+        return $this->hasMany(OrderItem::class);
     }
 }

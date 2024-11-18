@@ -78,16 +78,34 @@ class StoresController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatestoresRequest $request, Store $stores)
+    public function update(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'companyName' => 'required|string|max:255',
+            'companyDescription' => 'required|string',
+            'userID' => 'required|exists:users,id',
+        ]);
+
+        $store = Store::find($request->this_id);
+        // return $request;
+
+        $store->update([
+            'name' => $request->companyName,
+            'discrption' => $request->companyDescription,
+            'user_id' => $request->userID,
+        ]);
+
+        return redirect()->route('stores')->with('success', 'Company updated successfully!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Store $stores)
+    public function destroy(Request $request)
     {
-        //
+        $store = Store::find($request->this_id);
+        $store->delete();
+
+        return redirect()->route('stores')->with('success', 'Company deleted successfully!');
     }
 }

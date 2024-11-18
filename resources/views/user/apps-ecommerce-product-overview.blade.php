@@ -34,26 +34,19 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="grid grid-cols-1 gap-5 md:grid-cols-12">
-                                        <div class="rounded-md md:col-span-8 md:row-span-2 bg-slate-100 dark:bg-zink-600">
-                                            <img src="{{ asset('images/product/img-03.png') }}" alt="">
+
+                                    @if($images->count() > 0)
+                                        @foreach($images as $index => $image)
+                                            <div class="{{ $index === 0 ? 'rounded-md md:col-span-8 md:row-span-2 bg-slate-100 dark:bg-zink-600' : 'p-4 rounded-md md:col-span-4 bg-slate-100 dark:bg-zink-600' }}">
+                                                <img src="{{ asset('images/product/' . $image->name) }}" alt="Product Image {{ $index + 1 }}">
+                                            </div>
+                                        @endforeach
+                                    @else
+                                        <div class="rounded-md md:col-span-12 md:row-span-2 bg-slate-100 dark:bg-zink-600">
                                         </div>
-                                        <div class="rounded-md md:col-span-4 bg-slate-100 dark:bg-zink-600">
-                                            <img src="{{ asset('images/product/overview-02.png') }}" alt="">
-                                        </div>
-                                        <div class="p-4 rounded-md md:col-span-4 bg-slate-100 dark:bg-zink-600">
-                                            <img src="{{ asset('images/product/img-08.png') }}" alt="">
-                                        </div>
-                                        <div class="p-4 rounded-md md:col-span-4 bg-slate-100 dark:bg-zink-600">
-                                            <img src="{{ asset('images/product/img-09.png') }}" alt="">
-                                        </div>
-                                        <div class="p-4 rounded-md md:col-span-4 bg-slate-100 dark:bg-zink-600">
-                                            <img src="{{ asset('images/product/img-12.png') }}" alt="">
-                                        </div>
-                                        <div class="p-4 rounded-md md:col-span-4 bg-slate-100 dark:bg-zink-600">
-                                            <img src="{{ asset('images/product/img-13.png') }}" alt="">
-                                        </div>
+                                    @endif
                                     </div>
-                                    {{-- @if(auth()->user()) --}}
+
                                     @if (auth()->user())
                                     <div class="flex gap-2 mt-4 shrink-0">
                                         <button
@@ -72,7 +65,7 @@
                                             <i data-lucide="shopping-cart" class="inline-block align-middle size-3 ltr:mr-1 rtl:ml-1"></i>
                                             <span class="align-middle">Add to Cart</span>
                                         </button>
-                                        <button type="button" class="w-full text-white bg-red-500 border-red-500 btn hover:text-white hover:bg-red-600 hover:border-red-600 focus:text-white focus:bg-red-600 focus:border-red-600 focus:ring focus:ring-red-100 active:text-white active:bg-red-600 active:border-red-600 active:ring active:ring-red-100 dark:ring-red-400/20">Buy Now</button>
+                                        {{-- <button type="button" class="w-full text-white bg-red-500 border-red-500 btn hover:text-white hover:bg-red-600 hover:border-red-600 focus:text-white focus:bg-red-600 focus:border-red-600 focus:ring focus:ring-red-100 active:text-white active:bg-red-600 active:border-red-600 active:ring active:ring-red-100 dark:ring-red-400/20">Buy Now</button> --}}
                                     </div>
                                     @endif
                                     {{-- <div class="flex items-center gap-3 mt-3 justify-evenly">
@@ -89,7 +82,7 @@
                                         {{-- <div class="shrink-0">
                                             <i data-lucide="star" class="inline-block text-yellow-500 size-4 ltr:mr-1 rtl:ml-1"></i> <span class="align-middle">(4.8)</span>
                                         </div> --}}
-                                        <div class="shrink-0">
+                                        <div class="shrink-0 hidden">
                                             <button type="button" class="px-2.5 py-2 text-xs text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">View Store</button>
                                         </div>
                                     </div>
@@ -110,7 +103,7 @@
                             <div class="card-body">
                                 @if ( auth()->user() && auth()->user()->role->name == 'admin')
                                 <div class="relative ltr:float-right rtl:float-left dropdown">
-                                    <button class="flex items-center justify-center size-[30px] dropdown-toggle p-0 text-slate-500 btn bg-slate-100 hover:text-white hover:bg-slate-600 focus:text-white focus:bg-slate-600 focus:ring focus:ring-slate-100 active:text-white active:bg-slate-600 active:ring active:ring-slate-100 dark:bg-slate-500/20 dark:text-slate-400 dark:hover:bg-slate-500 dark:hover:text-white dark:focus:bg-slate-500 dark:focus:text-white dark:active:bg-slate-500 dark:active:text-white dark:ring-slate-400/20" id="categoryNotes1" data-bs-toggle="dropdown"><i data-lucide="more-horizontal" class="size-3"></i></button>
+                                    <button class="hidden flex items-center justify-center size-[30px] dropdown-toggle p-0 text-slate-500 btn bg-slate-100 hover:text-white hover:bg-slate-600 focus:text-white focus:bg-slate-600 focus:ring focus:ring-slate-100 active:text-white active:bg-slate-600 active:ring active:ring-slate-100 dark:bg-slate-500/20 dark:text-slate-400 dark:hover:bg-slate-500 dark:hover:text-white dark:focus:bg-slate-500 dark:focus:text-white dark:active:bg-slate-500 dark:active:text-white dark:ring-slate-400/20" id="categoryNotes1" data-bs-toggle="dropdown"><i data-lucide="more-horizontal" class="size-3"></i></button>
                                     <ul class="absolute z-50 hidden py-2 mt-1 ltr:text-left rtl:text-right list-none bg-white rounded-md shadow-md dropdown-menu min-w-[10rem] dark:bg-zink-600" aria-labelledby="categoryNotes1">
                                         <li>
                                             <a href="#!" class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" ><i data-lucide="file-edit" class="inline-block size-3 ltr:mr-1 rtl:ml-1"></i> <span class="align-middle">Edit</span></a>
@@ -121,6 +114,7 @@
                                     </ul>
                                 </div>
                                 @endif
+                                {{-- {{ $product->first() }} --}}
                                 {{-- <span class="px-2.5 py-0.5 text-xs inline-block font-medium rounded border bg-sky-100 border-sky-100 text-sky-500 dark:bg-sky-400/20 dark:border-transparent"> New Arrivals</span> --}}
                                 <h5 class="mt-3 mb-1">{{ $product->title }}</h5>
                                 <ul class="flex flex-wrap items-center gap-4 mb-5 text-slate-500 dark:text-zink-200">
@@ -131,11 +125,6 @@
 
                                 <div class="flex flex-wrap items-center gap-3 mb-4">
                                     <div class="flex items-center gap-2 text-yellow-500">
-                                        {{-- <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-half-line"></i> --}}
                                         @for ($i = 0; $i < 5; $i++)
                                             @if ($i < $fullStars)
                                                 <i class="ri-star-fill"></i> <!-- Full star -->
@@ -350,7 +339,7 @@
             <button data-modal-close="editReviewsModal" class="transition-all duration-200 ease-linear text-slate-400 hover:text-red-500"><i data-lucide="x" class="size-5"></i></button>
         </div>
         <div class="max-h-[calc(theme('height.screen')_-_180px)] p-4 overflow-y-auto">
-            <form action="#!" id="editReviewsModal">
+            <form action="#!" id="editReviewsModal" >
                 <div class="grid grid-cols-1 gap-5 xl:grid-cols-12">
 
                     @if (auth()->user())
@@ -628,7 +617,6 @@
             let productIds = $(this).data('product-ids');
             let productCode = $(this).data('product-code');
 
-
             // alert(productCode)
             $.ajax({
                 url: '{{ route("cart_add") }}',
@@ -642,8 +630,8 @@
                     _token: '{{ csrf_token() }}'
                 },
                 success: function(response) {
-cartItemCounte
                     $('#cartItemCounte').html(response.cartItemCount);
+                    // $('#cartItemCounte').html('4');
 
                     $('#alertForAddCart').addClass('show');
                     if(response.success){
@@ -672,6 +660,15 @@ cartItemCounte
             var productIDs = $('#AddReviewForm input[name="productIDs"]').val();
             var rate = $('#AddReviewForm select[name="rate"]').val();
             var comment = $('#AddReviewForm textarea[name="comment"]').val();
+
+            if (!rate) {
+                    alert('Please select a rating.');
+                    return false;
+                }
+            if (comment.length < 10) {
+                alert('Review comment must be at least 10 characters.');
+                return false;
+            }
 
             $.ajax({
                 url: "{{ route('AddReview') }}",  // Define the route to handle the submission

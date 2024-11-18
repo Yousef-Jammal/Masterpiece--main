@@ -15,11 +15,12 @@ class AdminCheck
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(!auth()->user()->role->name == 'admin'){
+        // if(!auth()->user()->role->name == 'admin'){
+        if(auth()->user()->role->name != 'user'){
             return $next($request);
         }
 
-        return 'your are not admin';
+        return redirect()->back()->with('error', 'Access denied. Adminsonly.');
 
     }
 }

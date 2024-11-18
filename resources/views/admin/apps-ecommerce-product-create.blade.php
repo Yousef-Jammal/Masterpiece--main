@@ -197,7 +197,7 @@
                             <div class="card-body">
                                 <h6 class="mb-4 text-15">Create Product</h6>
 
-                                <form action="{{ route('product_create') }}" method="post" enctype="multipart/form-data">
+                                <form action="{{ route('products.store') }}" method="post" enctype="multipart/form-data">
                                     @csrf
                                     <div class="grid grid-cols-1 gap-5 lg:grid-cols-2 xl:grid-cols-12">
                                         <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
@@ -233,7 +233,88 @@
 
                                         <ol id="my_ol" class="my-QCS"> <!-- Quantity  Color Size-->
 
-                                            <div id="add_more_QCS" class="my-plus-button" onclick="my_fun_add_QCS()">
+                                            {{-- <li class="relative flex items-center justify-around li-QCS p-2		">
+                                                <span onclick="my_fun_delete_QCS(this)" class="absolute cursor-pointer" style="left: 0.5rem; top: 0;">x</span>
+
+                                                <h3 class="absolute" style="left: 1.75rem;">1</h3> --}}
+
+                                                <div class="xl:col-span-4 w-28 flex items-end	">
+                                                        <div>
+                                                            <label for="qualityInput1" class="inline-block mb-2 text-base font-medium">Quantity</label>
+                                                        <input name="qualityInput1" type="number" id="qualityInput1" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="Quantity" required>
+                                                    </div>
+                                                </div><!--end col-->
+
+                                                <div class="xl:col-span-6">
+                                                    <label for="qualityInput1" class="inline-block mb-2 text-base font-medium">Colors Variant</label>
+                                                    <div class="flex flex-wrap items-center gap-2">
+                                                        <div>
+                                                            <input id="selectColor1" class="inline-block align-middle border rounded-sm appearance-none cursor-pointer size-5 bg-sky-500 border-sky-500 checked:bg-sky-500 checked:border-sky-500 disabled:opacity-75 disabled:cursor-default" type="radio" value="#0EA5E9" name="selectColor1">
+                                                        </div>
+                                                        <div>
+                                                            <input id="selectColor1" class="inline-block align-middle bg-orange-500 border border-orange-500 rounded-sm appearance-none cursor-pointer size-5 checked:bg-orange-500 checked:border-orange-500 disabled:opacity-75 disabled:cursor-default" type="radio" value="#F97316" name="selectColor1">
+                                                        </div>
+                                                        <div>
+                                                            <input id="selectColor1" class="inline-block align-middle bg-green-500 border border-green-500 rounded-sm appearance-none cursor-pointer size-5 checked:bg-green-500 checked:border-green-500 disabled:opacity-75 disabled:cursor-default" type="radio" value="#249782" name="selectColor1" checked>
+                                                        </div>
+                                                        <div>
+                                                            <input id="selectColor1" class="inline-block align-middle bg-purple-500 border border-purple-500 rounded-sm appearance-none cursor-pointer size-5 checked:bg-purple-500 checked:border-purple-500 disabled:opacity-75 disabled:cursor-default" type="radio" value="#A855F7" name="selectColor1">
+                                                        </div>
+                                                        <div>
+                                                            <input id="selectColor1" class="inline-block align-middle bg-yellow-500 border border-yellow-500 rounded-sm appearance-none cursor-pointer size-5 checked:bg-yellow-500 checked:border-yellow-500 disabled:opacity-75 disabled:cursor-default" type="radio" value="#EAB308" name="selectColor1">
+                                                        </div>
+                                                        <div>
+                                                            <input id="selectColor1" class="inline-block align-middle bg-red-500 border border-red-500 rounded-sm appearance-none cursor-pointer size-5 checked:bg-red-500 checked:border-red-500 disabled:opacity-75 disabled:cursor-default" type="radio" value="#EF4444" name="selectColor1">
+                                                        </div>
+                                                        <div>
+                                                            <input id="selectColor1" class="inline-block align-middle border rounded-sm appearance-none cursor-pointer size-5 bg-slate-500 border-slate-500 checked:bg-slate-500 checked:border-slate-500 disabled:opacity-75 disabled:cursor-default" type="radio" value="#64748B" name="selectColor1">
+                                                        </div>
+                                                        <div>
+                                                            <input id="selectColor1" class="inline-block align-middle border rounded-sm appearance-none cursor-pointer size-5 bg-slate-900 border-slate-900 checked:bg-slate-900 checked:border-slate-900 disabled:opacity-75 disabled:cursor-default" type="radio" value="#0F172A" name="selectColor1">
+                                                        </div>
+                                                        <div>
+                                                            <input id="selectColor1" class="inline-block align-middle border rounded-sm appearance-none cursor-pointer size-5 bg-slate-200 border-slate-200 checked:bg-slate-200 checked:border-slate-200 disabled:opacity-75 disabled:cursor-default" type="radio" value="#E2E8F0" name="selectColor1">
+                                                        </div>
+
+                                                    </div>
+                                                </div><!--end col-->
+                                                <div class="xl:col-span-6">
+                                                    <div class="inline-block mb-2 text-base font-medium">Size</div>
+                                                    <div class="flex flex-wrap items-center gap-2">
+                                                        <div>
+                                                            <input id="selectSizeXS1" class="hidden peer" type="radio" value="XS" name="selectSize1">
+                                                            <label for="selectSizeXS1" class="flex items-center justify-center text-xs border rounded-md cursor-pointer size-10 border-slate-200 dark:border-zink-500 peer-checked:bg-custom-50 dark:peer-checked:bg-custom-500/20 peer-checked:border-custom-300 dark:peer-checked:border-custom-700 peer-disabled:bg-slate-50 dark:peer-disabled:bg-slate-500/15 peer-disabled:border-slate-100 dark:peer-disabled:border-slate-800 peer-disabled:cursor-default peer-disabled:text-slate-500 dark:peer-disabled:text-zink-200">XS</label>
+                                                        </div>
+                                                        <div>
+                                                            <input id="selectSizeS1" class="hidden peer" type="radio" value="S" name="selectSize1" checked>
+                                                            <label for="selectSizeS1" class="flex items-center justify-center text-xs border rounded-md cursor-pointer size-10 border-slate-200 dark:border-zink-500 peer-checked:bg-custom-50 dark:peer-checked:bg-custom-500/20 peer-checked:border-custom-300 dark:peer-checked:border-custom-700 peer-disabled:bg-slate-50 dark:peer-disabled:bg-slate-500/15 peer-disabled:border-slate-100 dark:peer-disabled:border-slate-800 peer-disabled:cursor-default peer-disabled:text-slate-500 dark:peer-disabled:text-zink-200">S</label>
+                                                        </div>
+                                                        <div>
+                                                            <input id="selectSizeM1" class="hidden peer" type="radio" value="M" name="selectSize1">
+                                                            <label for="selectSizeM1" class="flex items-center justify-center text-xs border rounded-md cursor-pointer size-10 border-slate-200 dark:border-zink-500 peer-checked:bg-custom-50 dark:peer-checked:bg-custom-500/20 peer-checked:border-custom-300 dark:peer-checked:border-custom-700 peer-disabled:bg-slate-50 dark:peer-disabled:bg-slate-500/15 peer-disabled:border-slate-100 dark:peer-disabled:border-slate-800 peer-disabled:cursor-default peer-disabled:text-slate-500 dark:peer-disabled:text-zink-200">M</label>
+                                                        </div>
+                                                        <div>
+                                                            <input id="selectSizeL1" class="hidden peer" type="radio" value="L" name="selectSize1">
+                                                            <label for="selectSizeL1" class="flex items-center justify-center text-xs border rounded-md cursor-pointer size-10 border-slate-200 dark:border-zink-500 peer-checked:bg-custom-50 dark:peer-checked:bg-custom-500/20 peer-checked:border-custom-300 dark:peer-checked:border-custom-700 peer-disabled:bg-slate-50 dark:peer-disabled:bg-slate-500/15 peer-disabled:border-slate-100 dark:peer-disabled:border-slate-800 peer-disabled:cursor-default peer-disabled:text-slate-500 dark:peer-disabled:text-zink-200">L</label>
+                                                        </div>
+                                                        <div>
+                                                            <input id="selectSizeXL1" class="hidden peer" type="radio" value="XL" name="selectSize1">
+                                                            <label for="selectSizeXL1" class="flex items-center justify-center text-xs border rounded-md cursor-pointer size-10 border-slate-200 dark:border-zink-500 peer-checked:bg-custom-50 dark:peer-checked:bg-custom-500/20 peer-checked:border-custom-300 dark:peer-checked:border-custom-700 peer-disabled:bg-slate-50 dark:peer-disabled:bg-slate-500/15 peer-disabled:border-slate-100 dark:peer-disabled:border-slate-800 peer-disabled:cursor-default peer-disabled:text-slate-500 dark:peer-disabled:text-zink-200">XL</label>
+                                                        </div>
+                                                        <div>
+                                                            <input id="selectSize2XL1" class="hidden peer" type="radio" value="2XL" name="selectSize1">
+                                                            <label for="selectSize2XL1" class="flex items-center justify-center text-xs border rounded-md cursor-pointer size-10 border-slate-200 dark:border-zink-500 peer-checked:bg-custom-50 dark:peer-checked:bg-custom-500/20 peer-checked:border-custom-300 dark:peer-checked:border-custom-700 peer-disabled:bg-slate-50 dark:peer-disabled:bg-slate-500/15 peer-disabled:border-slate-100 dark:peer-disabled:border-slate-800 peer-disabled:cursor-default peer-disabled:text-slate-500 dark:peer-disabled:text-zink-200">2XL</label>
+                                                        </div>
+                                                        <div>
+                                                            <input id="selectSize3XL1" class="hidden peer" type="radio" value="3XL" name="selectSize1">
+                                                            <label for="selectSize3XL1" class="flex items-center justify-center text-xs border rounded-md cursor-pointer size-10 border-slate-200 dark:border-zink-500 peer-checked:bg-custom-50 dark:peer-checked:bg-custom-500/20 peer-checked:border-custom-300 dark:peer-checked:border-custom-700 peer-disabled:bg-slate-50 dark:peer-disabled:bg-slate-500/15 peer-disabled:border-slate-100 dark:peer-disabled:border-slate-800 peer-disabled:cursor-default peer-disabled:text-slate-500 dark:peer-disabled:text-zink-200">3XL</label>
+                                                        </div>
+                                                    </div>
+                                                {{-- </div><!--end col--> --}}
+
+                                                                        </li>
+
+                                            <div id="add_more_QCS" style="display: none" class="my-plus-button" onclick="my_fun_add_QCS()">
                                                 <svg
                                                     xmlns="http://www.w3.org/2000/svg"
                                                     width="1.25rem"
@@ -451,7 +532,7 @@
             count_of_li ++;
         }
 
-        my_fun_add_QCS()
+        // my_fun_add_QCS()
 
         function my_fun_delete_QCS(ele){
             ele.parentElement.remove();

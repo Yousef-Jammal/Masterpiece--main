@@ -132,7 +132,7 @@
     </div>
     <div class="relative min-h-screen group-data-[sidebar-size=sm]:min-h-sm">
 
-        <div style="margin: 0" class="group-data-[sidebar-size=lg]:ltr:md:ml-vertical-menu group-data-[sidebar-size=lg]:rtl:md:mr-vertical-menu group-data-[sidebar-size=md]:ltr:ml-vertical-menu-md group-data-[sidebar-size=md]:rtl:mr-vertical-menu-md group-data-[sidebar-size=sm]:ltr:ml-vertical-menu-sm group-data-[sidebar-size=sm]:rtl:mr-vertical-menu-sm pt-[calc(theme('spacing.header')_*_1)] pb-[calc(theme('spacing.header')_*_0.8)] px-4 group-data-[navbar=bordered]:pt-[calc(theme('spacing.header')_*_1.3)] group-data-[navbar=hidden]:pt-0 group-data-[layout=horizontal]:mx-auto group-data-[layout=horizontal]:max-w-screen-2xl group-data-[layout=horizontal]:px-0 group-data-[layout=horizontal]:group-data-[sidebar-size=lg]:ltr:md:ml-auto group-data-[layout=horizontal]:group-data-[sidebar-size=lg]:rtl:md:mr-auto group-data-[layout=horizontal]:md:pt-[calc(theme('spacing.header')_*_1.6)] group-data-[layout=horizontal]:px-3 group-data-[layout=horizontal]:group-data-[navbar=hidden]:pt-[calc(theme('spacing.header')_*_0.9)]">
+        <form action="{{ route('yourSubmitRoute') }}" method="GET" style="margin: 0" class="group-data-[sidebar-size=lg]:ltr:md:ml-vertical-menu group-data-[sidebar-size=lg]:rtl:md:mr-vertical-menu group-data-[sidebar-size=md]:ltr:ml-vertical-menu-md group-data-[sidebar-size=md]:rtl:mr-vertical-menu-md group-data-[sidebar-size=sm]:ltr:ml-vertical-menu-sm group-data-[sidebar-size=sm]:rtl:mr-vertical-menu-sm pt-[calc(theme('spacing.header')_*_1)] pb-[calc(theme('spacing.header')_*_0.8)] px-4 group-data-[navbar=bordered]:pt-[calc(theme('spacing.header')_*_1.3)] group-data-[navbar=hidden]:pt-0 group-data-[layout=horizontal]:mx-auto group-data-[layout=horizontal]:max-w-screen-2xl group-data-[layout=horizontal]:px-0 group-data-[layout=horizontal]:group-data-[sidebar-size=lg]:ltr:md:ml-auto group-data-[layout=horizontal]:group-data-[sidebar-size=lg]:rtl:md:mr-auto group-data-[layout=horizontal]:md:pt-[calc(theme('spacing.header')_*_1.6)] group-data-[layout=horizontal]:px-3 group-data-[layout=horizontal]:group-data-[navbar=hidden]:pt-[calc(theme('spacing.header')_*_0.9)]">
             <div class="container-fluid group-data-[content=boxed]:max-w-boxed mx-auto">
 
                 <div class="flex flex-col gap-2 py-4 md:flex-row md:items-center print:hidden">
@@ -148,12 +148,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="grid grid-cols-1 xl:grid-cols-12 gap-x-5">
-                    {{-- <div class="xl:col-span-12">
-                        <div class="flex gap-1 px-4 py-3 mb-5 text-sm text-green-500 border border-green-200 rounded-md md:items-center bg-green-50 dark:bg-green-400/20 dark:border-green-500/50">
-                            <i data-lucide="shopping-bag" class="h-4 shrink-0"></i> <p>The minimum order requirement is <b>$1,800</b>. To meet this threshold, please add additional products with a combined value of <b>$300</b>.</p>
-                        </div>
-                    </div><!--end col--> --}}
+                <div action="#!" class="grid grid-cols-1 xl:grid-cols-12 gap-x-5">
                     <div class="xl:col-span-8">
                         <div class="flex items-center gap-3 mb-5">
                             @if (auth()->user())
@@ -162,58 +157,43 @@
                                     </i> <span class="align-middle">Back to Cart</span>
                                 </a>
                             </div>
-                            {{-- <div class="shrink-0">
-                                <button type="button" class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20"><span class="align-middle">Place Order</span> <i data-lucide="move-right" class="inline-block align-middle size-4 ltr:ml-1 rtl:mr-1 rtl:rotate-180"></i></button>
-                            </div> --}}
                             @endif
                         </div>
                         <div class="card">
                             <div class="card-body">
                                 <h6 class="mb-4 text-15">Shipping Information</h6>
-                                <form action="#!">
+                                <div id="userForm">
                                     <div class="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-12">
-                                        <div class="xl:col-span-4">
-                                            <label for="firstNameInput" class="inline-block mb-2 text-base font-medium">First Name</label>
-                                            <input type="text" id="firstNameInput" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="Enter First Name">
-                                        </div><!--end col-->
-                                        <div class="xl:col-span-4">
-                                            <label for="middleNameInput" class="inline-block mb-2 text-base font-medium">Middle Name</label>
-                                            <input type="text" id="middleNameInput" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="Enter Middle Name">
-                                        </div><!--end col-->
-                                        <div class="xl:col-span-4">
-                                            <label for="lastNameInput" class="inline-block mb-2 text-base font-medium">Last Name</label>
-                                            <input type="text" id="lastNameInput" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="Enter Last Name">
-                                        </div><!--end col-->
+                                        @if(auth()->user())
+                                        <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+                                        @endif
                                         <div class="xl:col-span-4">
                                             <label for="phoneNumberInput" class="inline-block mb-2 text-base font-medium">Phone Number</label>
-                                            <input type="text" id="phoneNumberInput" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="(012) 345 678 9010">
-                                        </div><!--end col-->
+                                            <input name="phone" type="text" id="phoneNumberInput" class="form-input border-slate-200" placeholder="(012) 345 678 9010" required>
+                                            <p id="phoneError" class="text-red-500 text-sm mt-1"></p>
+                                        </div>
                                         <div class="xl:col-span-4">
                                             <label for="alternativeNumberInput" class="inline-block mb-2 text-base font-medium">Alternative Number</label>
-                                            <input type="text" id="alternativeNumberInput" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="(012) 345 678 9010">
-                                        </div><!--end col-->
-                                        <div class="xl:col-span-4">
-                                            <label for="emailAddressInput" class="inline-block mb-2 text-base font-medium">Email Address</label>
-                                            <input type="email" id="emailAddressInput" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="Enter email">
-                                        </div><!--end col-->
+                                            <input name="alternativeName" type="text" id="alternativeNumberInput" class="form-input border-slate-200" placeholder="(012) 345 678 9010">
+                                            <p id="altPhoneError" class="text-red-500 text-sm mt-1"></p>
+                                        </div>
                                         <div class="xl:col-span-12">
                                             <label for="streetAddressInput" class="inline-block mb-2 text-base font-medium">Street Address</label>
-                                            <input type="text" id="streetAddressInput" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="Street address">
-                                        </div><!--end col-->
+                                            <input name="street" type="text" id="streetAddressInput" class="form-input border-slate-200" placeholder="Street address" required>
+                                            <p id="addressError" class="text-red-500 text-sm mt-1"></p>
+                                        </div>
                                         <div class="xl:col-span-12">
                                             <label for="townCityInput" class="inline-block mb-2 text-base font-medium">Town/City</label>
-                                            <input type="text" id="townCityInput" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="Town/City">
-                                        </div><!--end col-->
-                                        <div class="xl:col-span-4">
-                                            <label for="stateInput" class="inline-block mb-2 text-base font-medium">State</label>
-                                            <input type="text" id="stateInput" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="State">
-                                        </div><!--end col-->
+                                            <input name="city" type="text" id="townCityInput" class="form-input border-slate-200" placeholder="Town/City" required>
+                                            <p id="cityError" class="text-red-500 text-sm mt-1"></p>
+                                        </div>
                                         <div class="xl:col-span-4">
                                             <label for="zipcodeInput" class="inline-block mb-2 text-base font-medium">ZipCode</label>
-                                            <input type="text" id="zipcodeInput" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="ZipCode">
-                                        </div><!--end col-->
-                                    </div><!--end grid-->
-                                </form>
+                                            <input name="zipCode" type="text" id="zipcodeInput" class="form-input border-slate-200" placeholder="ZipCode" required>
+                                            <p id="zipError" class="text-red-500 text-sm mt-1"></p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div><!--end card-->
 
@@ -230,7 +210,7 @@
                                             </span>
                                             <span class="grow">
                                                 <span class="block mb-1 font-semibold text-15">Express Delivery</span>
-                                                <span class="text-slate-500 dark:text-zink-200">Expected delivery: 01 Nov, Wednesday</span>
+                                                <span class="text-slate-500 dark:text-zink-200">Expected delivery: {{ getAfterDate(1) }}</span>
                                             </span>
                                             <span class="shrink-0">
                                                 <span class="block text-lg font-semibold">$11.99</span>
@@ -238,14 +218,14 @@
                                         </label>
                                     </div>
                                     <div class="flex items-center gap-3">
-                                        <input id="deliveryOption2" class="border rounded-full appearance-none cursor-pointer size-4 bg-slate-100 border-slate-200 dark:bg-zink-600 dark:border-zink-500 checked:bg-purple-500 checked:border-purple-500 dark:checked:bg-purple-500 dark:checked:border-purple-500 checked:disabled:bg-purple-400 checked:disabled:border-purple-400 peer" type="radio" name="deliveryChoose" value="express-delivery">
+                                        <input id="deliveryOption2" class="border rounded-full appearance-none cursor-pointer size-4 bg-slate-100 border-slate-200 dark:bg-zink-600 dark:border-zink-500 checked:bg-purple-500 checked:border-purple-500 dark:checked:bg-purple-500 dark:checked:border-purple-500 checked:disabled:bg-purple-400 checked:disabled:border-purple-400 peer" type="radio" name="deliveryChoose" value="air-logistic-delivery">
                                         <label for="deliveryOption2" class="flex flex-col gap-4 p-5 border rounded-md cursor-pointer md:flex-row border-slate-200 dark:border-zink-500 peer-checked:border-purple-500 dark:peer-checked:border-purple-700 grow">
                                             <span class="shrink-0">
                                                 <img src="{{ asset('images/delivery-2.png') }}" alt="" class="h-12">
                                             </span>
                                             <span class="grow">
                                                 <span class="block mb-1 font-semibold text-15">Air Logistic Delivery</span>
-                                                <span class="text-slate-500 dark:text-zink-200">Expected delivery: 06 Nov, Monday</span>
+                                                <span class="text-slate-500 dark:text-zink-200">Expected delivery: {{ getAfterDate(5) }}</span>
                                             </span>
                                             <span class="shrink-0">
                                                 <span class="block text-lg font-semibold">$5</span>
@@ -253,14 +233,14 @@
                                         </label>
                                     </div>
                                     <div class="flex items-center gap-3">
-                                        <input id="deliveryOption3" class="border rounded-full appearance-none cursor-pointer size-4 bg-slate-100 border-slate-200 dark:bg-zink-600 dark:border-zink-500 checked:bg-purple-500 checked:border-purple-500 dark:checked:bg-purple-500 dark:checked:border-purple-500 checked:disabled:bg-purple-400 checked:disabled:border-purple-400 peer" type="radio" name="deliveryChoose" value="express-delivery">
+                                        <input id="deliveryOption3" class="border rounded-full appearance-none cursor-pointer size-4 bg-slate-100 border-slate-200 dark:bg-zink-600 dark:border-zink-500 checked:bg-purple-500 checked:border-purple-500 dark:checked:bg-purple-500 dark:checked:border-purple-500 checked:disabled:bg-purple-400 checked:disabled:border-purple-400 peer" type="radio" name="deliveryChoose" value="free-delivery">
                                         <label for="deliveryOption3" class="flex flex-col gap-4 p-5 border rounded-md cursor-pointer md:flex-row border-slate-200 dark:border-zink-500 peer-checked:border-purple-500 dark:peer-checked:border-purple-700 grow">
                                             <span class="shrink-0">
                                                 <img src="{{ asset('images/delivery-3.png') }}" alt="" class="h-12">
                                             </span>
                                             <span class="grow">
                                                 <span class="block mb-1 font-semibold text-15">Free Delivery</span>
-                                                <span class="text-slate-500 dark:text-zink-200">Expected delivery: 11 Nov, Saturday</span>
+                                                <span class="text-slate-500 dark:text-zink-200">Expected delivery: {{ getAfterDate(10) }}</span>
                                             </span>
                                             <span class="shrink-0">
                                                 <span class="block text-lg font-semibold">$0</span>
@@ -274,31 +254,21 @@
                         <div class="card">
                             <div class="card-body">
                                 <h6 class="mb-4 text-15">Payment Information</h6>
-                                <form action="#!">
+                                <div action="#!">
                                     <div class="grid grid-cols-1 gap-5 xl:grid-cols-12">
                                         <div class="xl:col-span-12">
                                             <label for="cardNumberInput" class="inline-block mb-2 text-base font-medium">Card Number</label>
-                                            <input type="text" pattern="\d*" maxlength="16" id="cardNumberInput" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="XXXX XXXX XXXX XXXX">
+                                            <input  name="cardNumber" type="text" pattern="\d*" maxlength="16" id="cardNumberInput" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="XXXX XXXX XXXX XXXX" required>
                                         </div><!--end col-->
                                         <div class="xl:col-span-6">
                                             <label for="expiringInput" class="inline-block mb-2 text-base font-medium">Expiring (MM/YY)</label>
-                                            <input type="text" pattern="\d*" maxlength="4" id="expiringInput" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="MM/YY">
+                                            <input name="Exiring" type="text" pattern="\d*" maxlength="4" id="expiringInput" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="MM/YY" required>
                                         </div><!--end col-->
                                         <div class="xl:col-span-6">
                                             <label for="cvvInput" class="inline-block mb-2 text-base font-medium">CVV Code</label>
-                                            <input type="text" pattern="\d*" maxlength="3" id="cvvInput" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="000">
+                                            <input name="CVV" type="text" pattern="\d*" maxlength="3" id="cvvInput" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="000" required>
                                         </div><!--end col-->
                                     </div><!--end grid-->
-                                </form>
-
-                                <div class="mt-3">
-                                    <h6 class="mb-1">We accept the following cards</h6>
-                                    <div class="flex items-center gap-2">
-                                        <img src="{{ asset('images/img-013.png') }}" alt="" class="h-8">
-                                        <img src="{{ asset('images/img-022.png') }}" alt="" class="h-8">
-                                        <img src="{{ asset('images/img-032.png') }}" alt="" class="h-8">
-                                        <img src="{{ asset('images/img-042.png') }}" alt="" class="h-8">
-                                    </div>
                                 </div>
                             </div>
                         </div><!--end card-->
@@ -306,16 +276,15 @@
                     <div class="xl:col-span-4">
                         <div class="card">
                             <div class="card-body">
-                                <form id="discountForm">
+                                <div id="discountForm">
                                     <div class="mb-3">
-                                        <label for="inputText" class="inline-block mb-2 text-base font-medium">Discount Code
-                                            {{-- <span class="text-red-500">*</span> --}}
+                                        <label for="discountCode" class="inline-block mb-2 text-base font-medium">Discount Code
                                         </label>
-                                        <input name="discountCode" type="text" id="inputText" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" required>
+                                        <input id="discountCode" name="discountCode" type="text" class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200">
                                         <div id="resultMessage"></div>
                                     </div>
-                                    <button type="submit" class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">Check</button>
-                                </form>
+                                    <button type="button" id="discountCodeBtn" class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">Check</button>
+                                </div>
                             </div>
                         </div><!--end card-->
                         <div class="card">
@@ -333,7 +302,7 @@
                                                 <td class="px-3.5 py-4 border-b border-dashed first:pl-0 last:pr-0 border-slate-200 dark:border-zink-500">
                                                     <div class="flex items-center gap-3">
                                                         <div class="flex items-center justify-center rounded-md size-12 bg-slate-100 shrink-0">
-                                                            <img src="{{ asset('images/img-08.png') }}" alt="" class="h-8">
+                                                            <img src="{{ asset('images/product/' . $item->product->images->first()->name ) }}" alt="" class="h-8">
                                                         </div>
                                                         <div class="grow">
                                                             <h6 class="mb-1 text-15"><a href="apps-ecommerce-product-overview.html" class="transition-all duration-300 ease-linear hover:text-custom-500">{{ $item->product->title }}</a></h6>
@@ -389,55 +358,22 @@
                                 </div>
                                 @if (auth()->user())
                                 <div class="mt-4">
-                                    <button id="placeOrder" type="button" class="w-full text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">
+                                    <button id="checkoutBtn" type="submit" class="w-full text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">
                                         <span class="align-middle">Place Order</span>
                                         <i data-lucide="move-right" class="inline-block align-middle size-4 ltr:ml-1 rtl:mr-1 rtl:rotate-180"></i>
                                     </button>
+                                    {{-- <button id="checkoutBtn" class="btn btn-primary">Complete Checkout</button> --}}
+                                    {{-- <button id="submitFormBtn" class="btn btn-primary mt-5">Submit Order</button> --}}
                                 </div>
                                 @endif
                             </div>
                         </div>
-                        {{-- <h6 class="mb-4 underline text-16">Additional Service</h6>
-                        <div class="card">
-                            <div class="flex flex-col gap-3 md:items-center card-body md:flex-row">
-                                <div class="grow">
-                                    <h6 class="mb-1 text-15">Care + Package</h6>
-                                    <p class="text-slate-500 dark:text-zink-200">2 year of additional care</p>
-                                </div>
-                                <div class="shrink-0">
-                                    <b>$24.99</b>
-                                </div>
-                                <div class="shrink-0">
-                                    <div class="relative inline-block w-10 align-middle transition duration-200 ease-in">
-                                        <input type="checkbox" name="carePackage" id="carePackage" class="absolute block transition duration-300 ease-linear border-2 rounded-full appearance-none cursor-pointer size-5 border-slate-200 dark:border-zink-600 bg-white/80 dark:bg-zink-400 peer/published checked:bg-custom-500 dark:checked:bg-custom-500 ltr:checked:right-0 rtl:checked:left-0 checked:border-custom-100 dark:checked:border-custom-900 arrow-none checked:bg-none">
-                                        <label for="carePackage" class="block h-5 overflow-hidden duration-300 ease-linear border rounded-full cursor-pointer cursor-pointertransition border-slate-200 dark:border-zink-500 bg-slate-200 dark:bg-zink-600 peer-checked/published:bg-custom-100 dark:peer-checked/published:bg-custom-900 peer-checked/published:border-custom-100 dark:peer-checked/published:border-custom-900"></label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div><!--end card-->
-                        <div class="card">
-                            <div class="flex flex-col gap-3 md:items-center card-body md:flex-row">
-                                <div class="grow">
-                                    <h6 class="mb-1 text-15">Environment Friendly</h6>
-                                    <p class="text-slate-500 dark:text-zink-200">The primary goal of eco-warriors is creating</p>
-                                </div>
-                                <div class="shrink-0">
-                                    <b>$19.99</b>
-                                </div>
-                                <div class="shrink-0">
-                                    <div class="relative inline-block w-10 align-middle transition duration-200 ease-in">
-                                        <input type="checkbox" name="friendlyCheckbox" id="friendlyCheckbox" class="absolute block transition duration-300 ease-linear border-2 rounded-full appearance-none cursor-pointer size-5 border-slate-200 dark:border-zink-600 bg-white/80 dark:bg-zink-400 peer/published checked:bg-custom-500 dark:checked:bg-custom-500 ltr:checked:right-0 rtl:checked:left-0 checked:border-custom-100 dark:checked:border-custom-900 arrow-none checked:bg-none">
-                                        <label for="friendlyCheckbox" class="block h-5 overflow-hidden duration-300 ease-linear border rounded-full cursor-pointer cursor-pointertransition border-slate-200 dark:border-zink-500 bg-slate-200 dark:bg-zink-600 peer-checked/published:bg-custom-100 dark:peer-checked/published:bg-custom-900 peer-checked/published:border-custom-100 dark:peer-checked/published:border-custom-900"></label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div><!--end card--> --}}
                     </div><!--end col-->
                 </div><!--end grid-->
 
             </div>
             <!-- container-fluid -->
-        </div>
+        </form>
         <!-- End Page-content -->
 
         <footer style="left: 0" class="ltr:md:left-vertical-menu rtl:md:right-vertical-menu group-data-[sidebar-size=md]:ltr:md:left-vertical-menu-md group-data-[sidebar-size=md]:rtl:md:right-vertical-menu-md group-data-[sidebar-size=sm]:ltr:md:left-vertical-menu-sm group-data-[sidebar-size=sm]:rtl:md:right-vertical-menu-sm absolute right-0 bottom-0 px-4 h-14 group-data-[layout=horizontal]:ltr:left-0  group-data-[layout=horizontal]:rtl:right-0 left-0 border-t py-3 flex items-center dark:border-zink-600">
@@ -464,17 +400,23 @@
 @section('script')
 
 <script src="{{ asset('js/pages/apps-ecommerce-checkout.init.js') }}"></script>
+
+<script>
+    // document.getElementById("cardNumberInput").addEventListener("input", (e) => {
+    //     console.log('hi')
+    //     e.target.value = e.target.value.replace(/\D/g, "").slice(0, 16);
+    // });
+
+</script>
+
 <script src="{{ asset('js/jquery-3.7.1.min.js') }}"></script>
-
-
-
 <script>
 $(document).ready(function() {
     // التعامل مع إرسال نموذج الخصم
-    $('#discountForm').on('submit', function(e) {
-        e.preventDefault();
+    $('#discountCodeBtn').on('click', function(e) {
+        // e.preventDefault();
 
-        let discountCode = $('[name="discountCode"]').val();
+        let discountCode = $('#discountCode').val();
 
         if (discountCode === '') {
             $('#resultMessage').html('<span class="text-red-500">Please enter a discount code!</span>');
@@ -492,13 +434,15 @@ $(document).ready(function() {
                 if (response.valid) {
                     $('#resultMessage').html(`
                         <span class="text-green-500">The discount code is valid!</span>
-                        <br>
-                        Discount Amount: ${response.discount_amount ? response.discount_amount : 0}
-                        <br>
-                        Discount Percentage: ${response.discount_percentage ? response.discount_percentage + '%' : 'N/A'}
-                        <br>
-                        Minimum Order Amount: ${response.minimum_order_amount ? response.minimum_order_amount : 0}
                     `);
+
+                    // <br>
+                    //     Discount Amount: ${response.discount_amount ? response.discount_amount : 0}
+                    //     <br>
+                    //     Discount Percentage: ${response.discount_percentage ? response.discount_percentage + '%' : 'N/A'}
+                    //     <br>
+                    //     Minimum Order Amount: ${response.minimum_order_amount ? response.minimum_order_amount : 0}
+
                     if(response.discount_amount){
                         $('#Item_Discounts').html(`-$${response.discount_amount}`);
                     } else if(response.discount_percentage) {
@@ -518,5 +462,50 @@ $(document).ready(function() {
     });
 });
 </script>
+
+
+
+<script>
+
+
+
+// document.getElementById('checkoutBtn').addEventListener('click', function() {
+//     const data = {
+//         NameInput: document.getElementById('NameInput').value,
+//         phoneNumberInput: document.getElementById('phoneNumberInput').value,
+//         alternativeNumberInput: document.getElementById('alternativeNumberInput').value,
+//         streetAddressInput: document.getElementById('streetAddressInput').value,
+//         townCityInput: document.getElementById('townCityInput').value,
+//         zipcodeInput: document.getElementById('zipcodeInput').value,
+//         deliveryChoose: document.querySelector('input[name="deliveryChoose"]:checked').value,
+//         cardNumberInput: document.getElementById('cardNumberInput').value,
+//         expiringInput: document.getElementById('expiringInput').value,
+//         cvvInput: document.getElementById('cvvInput').value,
+//     };
+//     console.log(data)
+
+//     fetch('{{ route('checkout.process') }}', {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json',
+//             'X-CSRF-TOKEN': '{{ csrf_token() }}'
+//         },
+//         body: JSON.stringify(data)
+//     })
+//     .then(response => response.json())
+//     .then(data => {
+
+//         // console.log(data.data);
+//         // const queryString = new URLSearchParams(data).toString();
+//         window.location.href = `/your-target-url?${data.data}`;
+
+//     })
+//     .catch(error => {
+//         console.error('Error:', error);
+//     });
+// });
+</script>
+
+
 
 @endsection

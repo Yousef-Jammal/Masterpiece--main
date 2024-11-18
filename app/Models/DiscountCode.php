@@ -16,6 +16,7 @@ class DiscountCode extends Model
      *
      * @var array<int, string>
      */
+
     protected $fillable = [
         'code',
         'discount_amount',
@@ -57,7 +58,7 @@ class DiscountCode extends Model
      */
     public function incrementUsage()
     {
-        $this->used_count++;   
+        $this->used_count++;
         $this->save();
     }
 }

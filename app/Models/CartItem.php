@@ -15,6 +15,7 @@ class CartItem extends Model
      * @var array
      */
     protected $fillable = [
+        'id',
         'user_id',
         'color',
         'size',
@@ -22,6 +23,7 @@ class CartItem extends Model
         'product_id',
         'product_code',
     ];
+
 
     /**
      * Get the user associated with the cart item.

@@ -14,9 +14,10 @@ class Payment extends Model
      *
      * @var array
      */
-    protected $fillable = ['card_number', 'expiring', 'CVV'];
+    protected $table = 'payments_informations';
+    protected $fillable = ['card_number', 'expiring', 'CVV', 'user_id'];
 
-    /**
+    /** 
      * Get the user associated with this payment information.
      */
     public function user()
